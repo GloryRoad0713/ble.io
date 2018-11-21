@@ -1,0 +1,91 @@
+<!doctype html>
+<!--
+Copyright 2017 JellyWare Inc. All Rights Reserved.
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BlueJelly">
+    <meta name="viewport" content="width=640, maximum-scale=1.0, user-scalable=yes">
+    <title>BlueJelly</title>
+    <script type="text/javascript" src="https://gloryroad0713.github.io/ble.io/bluejelly.js"></script>
+  </head>
+
+<body>
+<h1></h1>
+<div class="container">
+    <div class="title margin">
+        <p id="title">BlueJelly Sample</p>
+        <p id="subtitle">Hello, BLE</p>
+    </div>
+
+    <div class="contents margin">
+        <button id="scan" class="button">Scan</button>
+        <hr>
+        <div id="device_name"> </div>
+    </div>
+    
+    <div class="contents margin">
+        <input id="write_value" class="button" value="1" size="1">
+        <button id="write" class="button">Write</button>
+        <hr>
+        <div id="device_name"> </div>
+        <div id="uuid_name"> </div>
+        <div id="status"> </div>
+
+    </div>
+    
+</div>
+<script>
+//--------------------------------------------------
+//Global変数
+//--------------------------------------------------
+//BlueJellyのインスタンス生成
+var ble = new BlueJelly();
+//--------------------------------------------------
+//ロード時の処理
+//--------------------------------------------------
+window.onload = function () {
+  //UUIDの設定
+  //ble.setUUID("UUID1",   "000000FF-0000-1000-8000-00805F9B34FB", "000000FF-0000-1000-8000-00805F9B34FB");
+  //ble.setUUID("UUID1",   "00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-000000000000");
+  ble.setUUID("UUID1",   "0xff", "0xff01");
+
+}
+//--------------------------------------------------
+//Scan後の処理
+//--------------------------------------------------
+ble.onScan = function (deviceName) {
+  document.getElementById('device_name').innerHTML = deviceName;
+  console.log(deviceName);
+}
+//-------------------------------------------------
+//ボタンが押された時のイベント登録
+//--------------------------------------------------
+document.getElementById('scan').addEventListener('click', function() {
+      //ble.scan('UUID1');
+      //ble.setUUID("UUID1",   "000000FF-0000-1000-8000-00805F9B34FB", "000000FF-0000-1000-8000-00805F9B34FB");
+      ble.setUUID("UUID1",   "0xff", "0xFF01");
+      ble.onWrite("1");
+});
+
+//--------------------------------------------------
+//Write後の処理
+//--------------------------------------------------
+ble.onWrite = function(uuid){
+  document.getElementById('uuid_name').innerHTML = uuid;
+  document.getElementById('status').innerHTML = "written data"
+}
+
+//-------------------------------------------------
+//ボタンが押された時のイベント登録
+//--------------------------------------------------
+document.getElementById('write').addEventListener('click', function() {
+    ble.write('UUID2', document.getElementById('write_value').value);
+});
+
+
+</script>
+</body>
+</html>

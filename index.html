@@ -21,8 +21,8 @@ var bluetoothDevice;
 var characteristic;
 
 //chibi:bit BLE UUID
-var LED_SERVICE_UUID                        = 'e95dd91d-251d-470a-a062-fa1922dfa9a8';
-var LED_TEXT_CHARACTERISTIC_UUID            = 'e95d93ee-251d-470a-a062-fa1922dfa9a8';
+var LED_SERVICE_UUID                        = '0xff';
+var LED_TEXT_CHARACTERISTIC_UUID            = '0xff01';
 
 
 //ボタンイベントリスナー
@@ -41,7 +41,7 @@ function connect() {
   
   options.filters = [
     {services: [LED_SERVICE_UUID]},
-    {name: "BBC micro:bit [vaget]"}
+    {name: "ESP_GATTS_DEMO"}
   ];
   
 

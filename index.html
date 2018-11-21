@@ -99,10 +99,11 @@ function connect() {
 }
 
 //LEDに表示するメッセージを送信
-function sendMessage(_num) {
+function sendMessage(_num_str) {
+  console.log(_num_str);
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
-  console.log(_num);
-  var text = String(_num);
+  //console.log(_num);
+  var text = _num_str;
   var arrayBuffe = new TextEncoder().encode(text);
   characteristic.writeValue(arrayBuffe);        
 }

@@ -1,4 +1,4 @@
-<!doctype html>
+!doctype html>
 <!--
 Copyright 2017 JellyWare Inc. All Rights Reserved.
 -->
@@ -9,83 +9,78 @@ Copyright 2017 JellyWare Inc. All Rights Reserved.
     <meta name="description" content="BlueJelly">
     <meta name="viewport" content="width=640, maximum-scale=1.0, user-scalable=yes">
     <title>BlueJelly</title>
-    <script type="text/javascript" src="https://gloryroad0713.github.io/ble.io/bluejelly.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="bluejelly.js"></script>
   </head>
 
 <body>
-<h1></h1>
 <div class="container">
     <div class="title margin">
         <p id="title">BlueJelly Sample</p>
-        <p id="subtitle">Hello, BLE</p>
+        <p id="subtitle">Readã§ãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿</p>
     </div>
 
     <div class="contents margin">
-        <button id="scan" class="button">Scan</button>
-        <hr>
-        <div id="device_name"> </div>
-    </div>
-    
-    <div class="contents margin">
-        <input id="write_value" class="button" value="1" size="1">
-        <button id="write" class="button">Write</button>
+        <button id="read" class="button">Read</button>
         <hr>
         <div id="device_name"> </div>
         <div id="uuid_name"> </div>
+        <div id="data_text"> </div>
         <div id="status"> </div>
 
     </div>
-    
+    <div class="footer margin">
+        For more information, see <a href="http://jellyware.jp/kurage" target="_blank">jellyware.jp</a> and <a href="https://github.com/electricbaka/bluejelly" target="_blank">GitHub</a> !
+    </div>
 </div>
 <script>
 //--------------------------------------------------
-//Global•Ï”
+//Globalå¤‰æ•°
 //--------------------------------------------------
-//BlueJelly‚ÌƒCƒ“ƒXƒ^ƒ“ƒX¶¬
+//BlueJellyã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆ
 var ble = new BlueJelly();
 //--------------------------------------------------
-//ƒ[ƒh‚Ìˆ—
+//ãƒ­ãƒ¼ãƒ‰æ™‚ã®å‡¦ç†
 //--------------------------------------------------
 window.onload = function () {
-  //UUID‚Ìİ’è
-  //ble.setUUID("UUID1",   "000000FF-0000-1000-8000-00805F9B34FB", "000000FF-0000-1000-8000-00805F9B34FB");
-  //ble.setUUID("UUID1",   "00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-000000000000");
-  ble.setUUID("UUID1",   "0xff", "0xff01");
-
+  //UUIDã®è¨­å®š
+  ble.setUUID("UUID1", "4fafc201-1fb5-459e-8fcc-c5c9c331914b", "beb5483e-36e1-4688-b7f5-ea07361b26a8");  //BLEnano SimpleControl rx_uuid
 }
 //--------------------------------------------------
-//ScanŒã‚Ìˆ—
+//Scanå¾Œã®å‡¦ç†
 //--------------------------------------------------
 ble.onScan = function (deviceName) {
   document.getElementById('device_name').innerHTML = deviceName;
-  console.log(deviceName);
+  document.getElementById('status').innerHTML = "found device!";
 }
-//-------------------------------------------------
-//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ÌƒCƒxƒ“ƒg“o˜^
 //--------------------------------------------------
-document.getElementById('scan').addEventListener('click', function() {
-      //ble.scan('UUID1');
-      //ble.setUUID("UUID1",   "000000FF-0000-1000-8000-00805F9B34FB", "000000FF-0000-1000-8000-00805F9B34FB");
-      ble.setUUID("UUID1",   "0xff", "0xFF01");
-      ble.onWrite("1");
-});
-
+//ConnectGATTå¾Œã®å‡¦ç†
 //--------------------------------------------------
-//WriteŒã‚Ìˆ—
-//--------------------------------------------------
-ble.onWrite = function(uuid){
+ble.onConnectGATT = function (uuid) {
+  console.log('> connected GATT!');
   document.getElementById('uuid_name').innerHTML = uuid;
-  document.getElementById('status').innerHTML = "written data"
+  document.getElementById('status').innerHTML = "connected GATT!";
 }
-
-//-------------------------------------------------
-//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ÌƒCƒxƒ“ƒg“o˜^
 //--------------------------------------------------
-document.getElementById('write').addEventListener('click', function() {
-    ble.write('UUID2', document.getElementById('write_value').value);
+//Readå¾Œã®å‡¦ç†ï¼šå¾—ã‚‰ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã®è¡¨ç¤ºãªã©è¡Œã†
+//--------------------------------------------------
+ble.onRead = function (data, uuid){
+  //ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¾“ã£ã¦å€¤ã‚’å–å¾—
+  value = data.getInt8(0);
+  //ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«å€¤ã‚’è¡¨ç¤º
+  console.log(value);
+  //HTMLã«å€¤ã‚’è¡¨ç¤º
+  document.getElementById('data_text').innerHTML = value;
+  document.getElementById('uuid_name').innerHTML = uuid;
+  document.getElementById('status').innerHTML = "read data"
+}
+//-------------------------------------------------
+//ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆç™»éŒ²
+//--------------------------------------------------
+document.getElementById('read').addEventListener('click', function() {
+      ble.read('UUID1');
 });
-
-
 </script>
 </body>
 </html>

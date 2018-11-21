@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<title>Micro:bit LEDテキスト送信</title>
+<title>ESP_GATTS_DEMO</title>
 </head>
 
 <body>
@@ -12,8 +12,32 @@
 <button id="connect">接続</button>
 <button id="disconnect">切断</button>
 <input id="message" value="hello" />
-<button id="send">送信</button>
-
+<br>
+    <div>
+        <button id="send" value="1">1の光</button>
+    </div>
+    <div>
+        <button id="send" value="2">2の光</button>
+    </div>
+    <div>
+        <button id="send" value="3">3の光</button>
+    </div>
+    <div>
+        <button id="send" value="4">4の光</button>
+    </div>
+    <div>
+        <button id="send" value="5">5の光</button>
+    </div>
+    <div>
+        <button id="send" value="6">6の光</button>
+    </div>
+    <div>
+        <button id="send" value="7">7の光</button>
+    </div>
+    <div>
+        <button id="send" value="8">8の光</button>
+    </div>
+    
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.3.0/d3.min.js"></script>    
     
 <script>
@@ -72,7 +96,9 @@ function connect() {
 //LEDに表示するメッセージを送信
 function sendMessage() {
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
-  var text = document.querySelector("#message").value;
+    console.log(d3.event)
+    console.log(d3.event.value)
+  var text = "1";
   var arrayBuffe = new TextEncoder().encode(text);
   characteristic.writeValue(arrayBuffe);        
 }

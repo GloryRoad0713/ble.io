@@ -12,7 +12,6 @@
 <p>はじめに基盤に電源を入れて接続してください</p>
 <button id="connect">接続</button>
 <button id="disconnect">切断</button>
-<input id="message" value="hello" />
 <br>    
 <br>
 <div>
@@ -90,7 +89,7 @@ audio_list = new Array(8);
 for(var i=0; i < audio_list.length; i++){
     audio_list[i] = new Audio();
     audio_list[i].src = sound_links[i].link;
-    console.log(sound_links[i].link);
+    //console.log(sound_links[i].link);
 }
  
 var bluetoothDevice;

@@ -13,44 +13,86 @@
 <button id="connect">接続</button>
 <button id="disconnect">切断</button>
 <input id="message" value="hello" />
-    
-
+<br>    
+<br>
 <div>
     <button id="send" value="1">1の光</button>
-    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%">
+    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%"
+        oninput="document.getElementById('output1').value=this.value">
+    <output id="output1">0</output>秒後に音を再生
+    <input type="checkbox" id = "check1" checked="checked">
 </div>
 <div>
     <button id="send" value="2">2の光</button>
-    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%">
+    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%"
+        oninput="document.getElementById('output2').value=this.value">
+    <output id="output2">0</output>秒後に音を再生
+    <input type="checkbox" id = "check2" checked="checked">
 </div>
 <div>
     <button id="send" value="3">3の光</button>
-    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%">
+    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%"
+        oninput="document.getElementById('output3').value=this.value">
+    <output id="output3">0</output>秒後に音を再生
+    <input type="checkbox" id = "check3" checked="checked">
 </div>
 <div>
     <button id="send" value="4">4の光</button>
-    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%">
+    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%"
+        oninput="document.getElementById('output4').value=this.value">
+    <output id="output4">0</output>秒後に音を再生
+    <input type="checkbox" id = "check4" checked="checked">
 </div>
 <div>
     <button id="send" value="5">5の光</button>
-    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%">
+    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%"
+        oninput="document.getElementById('output5').value=this.value">
+    <output id="output5">0</output>秒後に音を再生
+    <input type="checkbox" id = "check5" checked="checked">
 </div>
 <div>
     <button id="send" value="6">6の光</button>
-    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%">
+    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%"
+        oninput="document.getElementById('output6').value=this.value">
+    <output id="output6">0</output>秒後に音を再生
+    <input type="checkbox" id = "check6" checked="checked">
 </div>
 <div>
     <button id="send" value="7">7の光</button>
-    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%">
+    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%"
+        oninput="document.getElementById('output7').value=this.value">
+    <output id="output7">0</output>秒後に音を再生
+    <input type="checkbox" id = "check7" checked="checked">
 </div>
 <div>
     <button id="send" value="8">8の光</button>
-    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%">
+    <input id = "time" type="range" class="input-range" value="0" min="1" max="5"  step="0.1" data-unit="%"
+        oninput="document.getElementById('output8').value=this.value">
+    <output id="output8">0</output>秒後に音を再生
+    <input type="checkbox" id = "check8" checked="checked">
 </div>
     
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.3.0/d3.min.js"></script>    
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     
 <script>
+
+var sound_links = [{link:"https://drive.google.com/uc?id=1UWVthywo-cLWRAafPUgCJDa4WnVMIPGw", name:"01"},
+                   {link:"https://drive.google.com/uc?id=11hceyP4BjvHF7cBBKHMfxPdRNtIenxG2", name:"02"},
+                   {link:"https://drive.google.com/uc?id=1-TN4fAtIb2KJkJkSeKwOT-rwcyWYsLqE", name:"03"},
+                   {link:"https://drive.google.com/uc?id=1l3yD9RbjGQaCrqpLxXKm6VKYwkdvawdZ", name:"04"},
+                   {link:"https://drive.google.com/uc?id=1-4aQLpD5XgxGBTOtKwtidITIkRpMJh2w", name:"05"},
+                   {link:"https://drive.google.com/uc?id=18LlOcMmZo2uJB_sxlsaALApnBcoFyjv9", name:"06"},
+                   {link:"https://drive.google.com/uc?id=1Lwwtjp8Ltjec4sS8qCZv66VxBq8oJSXO", name:"07"},
+                   {link:"https://drive.google.com/uc?id=1s6CBqsp3P_cqTkWA5TmYUWcQ_mfSHgOG", name:"08"}]; 
+
+audio_list = new Array(8);
+for(var i=0; i < audio_list.length; i++){
+    audio_list[i] = new Audio();
+    audio_list[i].src = sound_links[i].link;
+    console.log(sound_links[i].link);
+}
+ 
 var bluetoothDevice;
 var characteristic;
 
@@ -108,14 +150,32 @@ function connect() {
   });    
 }
 
-//LEDに表示するメッセージを送信
+//ESP32に値を送信
 function sendMessage(_num_str) {
-  console.log(_num_str);
+  //console.log(_num_str);
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   //console.log(_num);
+  playSound(_num_str);
   var text = _num_str;
   var arrayBuffe = new TextEncoder().encode(text);
   characteristic.writeValue(arrayBuffe);        
+  
+}
+
+function playSound(_num_str){
+  var c_name = "check" + _num_str;
+  var o_name = "output" + _num_str;
+  var c_state = $("[id=" + c_name + "]").prop("checked");
+  var delay_time = $("[id=" + o_name + "]").val()*1000;
+  if(c_state == true){
+    setTimeout(function(){
+      audio_list[Number(_num_str)].pause();
+      audio_list[Number(_num_str)].currentTime = 0;   
+      audio_list[Number(_num_str)].play();
+    },delay_time);
+  }
+  console.log(delay_time);
+
 }
 
 

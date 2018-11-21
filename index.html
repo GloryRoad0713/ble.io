@@ -55,7 +55,7 @@ d3.select("#disconnect").on("click", disconnect);
 //d3.select("#send").on("click", sendMessage);    
 
 document.body.addEventListener('click', function (event) {
-  console.log(event.target.value);
+  //console.log(event.target.value);
     if(event.target.id = "send"){
       sendMessage(event.target.value);
     }
@@ -101,7 +101,7 @@ function connect() {
 //LEDに表示するメッセージを送信
 function sendMessage(_num) {
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
-
+  console.log(_num);
   var text = String(_num);
   var arrayBuffe = new TextEncoder().encode(text);
   characteristic.writeValue(arrayBuffe);        

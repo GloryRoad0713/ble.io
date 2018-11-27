@@ -10,6 +10,11 @@ audio_list = new Array(8);
 for(var i=0; i < audio_list.length; i++){
     audio_list[i] = new Audio();
     audio_list[i].src = sound_links[i].link;
+
+    audio_list[i].play();
+    audio_list[i].currentTime = 0;
+    audio_list[i].pause();
+    
     //console.log(sound_links[i].link);
 }
 

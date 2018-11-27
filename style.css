@@ -173,7 +173,7 @@ overflow: hidden;
 /* ここから下がボタンのCSS　*/
 .btn-animation-02 {
   display: inline-block;
-  width: 400px;
+  width: 90%;
   text-align: center;
   background-color: #9ec34b;
   border: 2px solid #9ec34b;

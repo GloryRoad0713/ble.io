@@ -24,6 +24,7 @@ for(var i=0; i < audio_list.length; i++){
     audio_list[i].src = sound_links[i].link;
 
     audio_list[i].preload ="auto";
+    audio_list[i].loop = true;
     
     //console.log(sound_links[i].link);
 }

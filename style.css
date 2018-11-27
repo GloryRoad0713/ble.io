@@ -123,7 +123,7 @@ overflow: hidden;
   text-align: center;
   background-color: #9ec34b;
   border: 2px solid #9ec34b;
-  font-size: 30px;
+  font-size: 40px;
   color: #9ec34b;
   text-decoration: none;
   font-weight: bold;
@@ -175,7 +175,7 @@ overflow: hidden;
   text-align: center;
   background-color: #9ec34b;
   border: 2px solid #9ec34b;
-  font-size: 30px;
+  font-size: 40px;
   color: #9ec34b;
   text-decoration: none;
   font-weight: bold;
@@ -283,7 +283,7 @@ input[type=range] {
   height: 20px;
   -webkit-appearance: none;
   margin: 2em auto;
-  width: 70%;
+  width: 68%;
 }
 input[type=range]:focus {
   outline: none;

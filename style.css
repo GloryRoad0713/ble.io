@@ -121,15 +121,15 @@ overflow: hidden;
 /* ここから下がボタンのCSS　*/
 .btn-animation-01 {
   display: inline-block;
-  width: 197px;
+  width: 43%;
   text-align: center;
   background-color: #9ec34b;
   border: 2px solid #9ec34b;
-  font-size: 16px;
+  font-size: 24px;
   color: #9ec34b;
   text-decoration: none;
   font-weight: bold;
-  padding: 5px 24px;
+  padding: 15px 24px;
   border-radius: 5px;
   position: relative;
 	margin-bottom: 25px;
@@ -177,11 +177,11 @@ overflow: hidden;
   text-align: center;
   background-color: #9ec34b;
   border: 2px solid #9ec34b;
-  font-size: 16px;
+  font-size: 24px;
   color: #9ec34b;
   text-decoration: none;
   font-weight: bold;
-  padding: 10px 24px;
+  padding: 30px 24px;
   border-radius: 5px;
   position: relative;
 }

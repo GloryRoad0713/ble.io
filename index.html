@@ -1,91 +1,108 @@
-<!doctype html>
-<!--
-Copyright 2017 JellyWare Inc. All Rights Reserved.
--->
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BlueJelly">
-    <meta name="viewport" content="width=640, maximum-scale=1.0, user-scalable=yes">
-    <title>BlueJelly</title>
-    <script type="text/javascript" src="https://gloryroad0713.github.io/ble.io/bluejelly.js"></script>
-  </head>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>ESP_GATTS_DEMO</title>
+</head>
 
 <body>
-<h1></h1>
-<div class="container">
-    <div class="title margin">
-        <p id="title">BlueJelly Sample</p>
-        <p id="subtitle">Hello, BLE</p>
-    </div>
+  <div class="container">
+    <h2>å…‰ã¨éŸ³ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«</h2>
+    <span class = "explain">ã¯ã˜ã‚ã«åŸºç›¤ã«é›»æºã‚’å…¥ã‚Œã¦æ¥ç¶šã—ã¦ãã ã•ã„</span><br>
+    <button id="connect" class="btn-animation-01"><span>æ¥ç¶š</span></button>
+    <button id="disconnect" class="btn-animation-01"><span>åˆ‡æ–­</span></button>
+  </div>
 
-    <div class="contents margin">
-        <button id="scan" class="button">Scan</button>
-        <hr>
-        <div id="device_name"> </div>
-    </div>
-    
-    <div class="contents margin">
-        <input id="write_value" class="button" value="1" size="1">
-        <button id="write" class="button">Write</button>
-        <hr>
-        <div id="device_name"> </div>
-        <div id="uuid_name"> </div>
-        <div id="status"> </div>
-
-    </div>
-    
+<!--
+<div class="switch">
+    <label class="switch__label">
+        <input id="ble_connect" type="checkbox" class="switch__input"/>
+        <span class="switch__content"></span>
+        <span class="switch__circle"></span>
+    </label>
+    <span>ã¾ãšåŸºç›¤ã«é›»æºã‚’å…¥ã‚Œã¦bleæ¥ç¶šã—ã¦ãã ã•ã„</span>
 </div>
-<script>
-//--------------------------------------------------
-//Global•Ï”
-//--------------------------------------------------
-//BlueJelly‚ÌƒCƒ“ƒXƒ^ƒ“ƒX¶¬
-var ble = new BlueJelly();
-//--------------------------------------------------
-//ƒ[ƒh‚Ìˆ—
-//--------------------------------------------------
-window.onload = function () {
-  //UUID‚Ìİ’è
-  //ble.setUUID("UUID1",   "000000FF-0000-1000-8000-00805F9B34FB", "000000FF-0000-1000-8000-00805F9B34FB");
-  //ble.setUUID("UUID1",   "00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-000000000000");
-  ble.setUUID("UUID1",   "0xff", "0xff01");
+-->
 
-}
-//--------------------------------------------------
-//ScanŒã‚Ìˆ—
-//--------------------------------------------------
-ble.onScan = function (deviceName) {
-  document.getElementById('device_name').innerHTML = deviceName;
-  console.log(deviceName);
-}
-//-------------------------------------------------
-//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ÌƒCƒxƒ“ƒg“o˜^
-//--------------------------------------------------
-document.getElementById('scan').addEventListener('click', function() {
-      //ble.scan('UUID1');
-      //ble.setUUID("UUID1",   "000000FF-0000-1000-8000-00805F9B34FB", "000000FF-0000-1000-8000-00805F9B34FB");
-      ble.setUUID("UUID1",   "0xff", "0xFF01");
-      ble.onWrite("1");
-});
+<div class="container">
+    <button id="send" value="1" class="btn-animation-02"><span>1ã®å…‰</span></a></button>
+    <div class="cp_ipcheck">
+        <input type="checkbox" id = "check1" class="check-animation" checked="checked">
+        <input id = "time" type="range" class="input-range" value="0.0" min="0.0" max="5.0"  step="0.1" data-unit="%"
+            oninput="document.getElementById('output1').value=this.value">
+        <output id="output1">0</output><span>ç§’å¾Œã«éŸ³ã‚’å†ç”Ÿ</span>
+    </div>
+</div>
+<div class="container">
+    <button id="send" value="2" class="btn-animation-02"><span>2ã®å…‰</span></a></button>
+    <div class="cp_ipcheck">
+        <input type="checkbox" id = "check2" class="check-animation" checked="checked">
+        <input id = "time" type="range" class="input-range" value="0" min="0" max="5"  step="0.1" data-unit="%"
+            oninput="document.getElementById('output2').value=this.value">
+        <output id="output2">0</output><span>ç§’å¾Œã«éŸ³ã‚’å†ç”Ÿ</span>
+    </div>
+</div>
+<div class="container">
+    <button id="send" value="3" class="btn-animation-02"><span>3ã®å…‰</span></a></button>
+    <div class="cp_ipcheck">
+        <input type="checkbox" id = "check3" class="check-animation" checked="checked">
+        <input id = "time" type="range" class="input-range" value="0" min="0" max="5"  step="0.1" data-unit="%"
+            oninput="document.getElementById('output3').value=this.value">
+        <output id="output3">0</output><span>ç§’å¾Œã«éŸ³ã‚’å†ç”Ÿ</span>
+    </div>
+</div>
+<div class="container">
+    <button id="send" value="4" class="btn-animation-02"><span>4ã®å…‰</span></a></button>
+    <div class="cp_ipcheck">
+        <input type="checkbox" id = "check4" class="check-animation" checked="checked">
+        <input id = "time" type="range" class="input-range" value="0" min="0" max="5"  step="0.1" data-unit="%"
+            oninput="document.getElementById('output4').value=this.value">
+        <output id="output4">0</output><span>ç§’å¾Œã«éŸ³ã‚’å†ç”Ÿ</span>
+    </div>
+</div>
+<div class="container">
+    <button id="send" value="5" class="btn-animation-02"><span>5ã®å…‰</span></a></button>
+    <div class="cp_ipcheck">
+        <input type="checkbox" id = "check5" class="check-animation" checked="checked">
+        <input id = "time" type="range" class="input-range" value="0" min="0" max="5"  step="0.1" data-unit="%"
+            oninput="document.getElementById('output5').value=this.value">
+        <output id="output5">0</output><span>ç§’å¾Œã«éŸ³ã‚’å†ç”Ÿ</span>
+    </div>
+</div>
+<div class="container">
+    <button id="send" value="6" class="btn-animation-02"><span>6ã®å…‰</span></a></button>
+    <div class="cp_ipcheck">
+        <input type="checkbox" id = "check6" class="check-animation" checked="checked">
+        <input id = "time" type="range" class="input-range" value="0" min="0" max="5"  step="0.1" data-unit="%"
+            oninput="document.getElementById('output6').value=this.value">
+        <output id="output6">0</output><span>ç§’å¾Œã«éŸ³ã‚’å†ç”Ÿ</span>
+    </div>
+</div>
+<div class="container">
+    <button id="send" value="7" class="btn-animation-02"><span>7ã®å…‰</span></a></button>
+    <div class="cp_ipcheck">
+        <input type="checkbox" id = "check7" class="check-animation" checked="checked">
+        <input id = "time" type="range" class="input-range" value="0" min="0" max="5"  step="0.1" data-unit="%"
+            oninput="document.getElementById('output7').value=this.value">
+        <output id="output7">0</output><span>ç§’å¾Œã«éŸ³ã‚’å†ç”Ÿ</span>
+    </div>
+</div>
+<div class="container">
+    <button id="send" value="8" class="btn-animation-02"><span>8ã®å…‰</span></a></button>
+    <div class="cp_ipcheck">
+        <input type="checkbox" id = "check8" class="check-animation" checked="checked">
+        <input id = "time" type="range" class="input-range" value="0" min="0" max="5"  step="0.1" data-unit="%"
+            oninput="document.getElementById('output8').value=this.value">
+        <output id="output8">0</output><span>ç§’å¾Œã«éŸ³ã‚’å†ç”Ÿ</span>
+    </div>
+</div>
 
-//--------------------------------------------------
-//WriteŒã‚Ìˆ—
-//--------------------------------------------------
-ble.onWrite = function(uuid){
-  document.getElementById('uuid_name').innerHTML = uuid;
-  document.getElementById('status').innerHTML = "written data"
-}
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src=ble_light.js"></script>
 
-//-------------------------------------------------
-//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ÌƒCƒxƒ“ƒg“o˜^
-//--------------------------------------------------
-document.getElementById('write').addEventListener('click', function() {
-    ble.write('UUID2', document.getElementById('write_value').value);
-});
+<link rel="stylesheet" type="text/css" href="style.css">
 
-
-</script>
 </body>
 </html>

@@ -283,7 +283,7 @@ input[type=range] {
   height: 20px;
   -webkit-appearance: none;
   margin: 2em auto;
-  width: 68%;
+  width: 65%;
 }
 input[type=range]:focus {
   outline: none;

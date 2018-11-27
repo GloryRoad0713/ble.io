@@ -121,18 +121,18 @@ overflow: hidden;
 /* ここから下がボタンのCSS　*/
 .btn-animation-01 {
   display: inline-block;
-  width: 43%;
+  width: 44%;
   text-align: center;
   background-color: #9ec34b;
   border: 2px solid #9ec34b;
-  font-size: 24px;
+  font-size: 30px;
   color: #9ec34b;
   text-decoration: none;
   font-weight: bold;
-  padding: 15px 24px;
+  padding: 15px 35px;
   border-radius: 5px;
   position: relative;
-	margin-bottom: 25px;
+　margin-bottom: 35px;
 }
 
 .btn-animation-01 span {
@@ -177,11 +177,11 @@ overflow: hidden;
   text-align: center;
   background-color: #9ec34b;
   border: 2px solid #9ec34b;
-  font-size: 24px;
+  font-size: 30px;
   color: #9ec34b;
   text-decoration: none;
   font-weight: bold;
-  padding: 30px 24px;
+  padding: 30px 35px;
   border-radius: 5px;
   position: relative;
 }
@@ -279,10 +279,10 @@ RERUN
 
 /* ここから下がコントロールバーのCSS　*/
 input[type=range] {
-  height: 10px;
+  height: 20px;
   -webkit-appearance: none;
   margin: 2em auto;
-  width: 275px;
+  width: 85%;
 }
 input[type=range]:focus {
   outline: none;

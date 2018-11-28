@@ -29,6 +29,8 @@ for(var i=0; i < audio_list.length; i++){
     //console.log(sound_links[i].link);
 }
 
+var pre_select_num = 0;
+
 var bluetoothDevice;
 var characteristic;
 //chibi:bit BLE UUID
@@ -92,6 +94,10 @@ function sendMessage(_num_str) {
 
 }
 function playSound(_num_str){
+  if(Number(_num_str) == pre_select_num){
+    audio_list[pre_select_num].pause();
+    //audio_list[pre_select_num].currentTime = 0;
+  }
   var c_name = "check" + _num_str;
   var o_name = "output" + _num_str;
   var c_state = $("[id=" + c_name + "]").prop("checked");
@@ -104,6 +110,7 @@ function playSound(_num_str){
     },delay_time);
   }
   console.log(delay_time);
+  pre_select_num = Number(_num_str);
 }
 //BEL切断処理
 function disconnect() {

@@ -86,10 +86,23 @@ function sendMessage(_num_str) {
   //console.log(_num_str);
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   //console.log(_num);
-
+  
   var text = _num_str;
   var arrayBuffe = new TextEncoder().encode(text);
-  characteristic.writeValue(arrayBuffe);
+  
+  if(_num_str == '0' || _num_str == '4' || _num_str == '7' || _num_str == '8'){
+      var loopBuffe = new TextEncoder().encode("l0");
+      characteristic.writeValue(loopBuffe);
+  }
+  else{
+      var arrayBuffe = new TextEncoder().encode("l1");
+      characteristic.writeValue(loopBuffe);
+  }
+  
+  setTimeout(function(){
+    characteristic.writeValue(arrayBuffe);
+  },100);
+             
   playSound(_num_str);
 
 }

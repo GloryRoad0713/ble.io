@@ -24,7 +24,7 @@ for(var i=0; i < audio_list.length; i++){
     audio_list[i].src = sound_links[i].link;
 
     audio_list[i].preload ="auto";
-    audio_list[i].loop = true;
+    //audio_list[i].loop = true;
     
     //console.log(sound_links[i].link);
 }
@@ -89,12 +89,14 @@ function sendMessage(_num_str) {
   
   var text = _num_str;
   var arrayBuffe = new TextEncoder().encode(text);
-  
+  console.log(text);
   if(_num_str == '0' || _num_str == '4' || _num_str == '7' || _num_str == '8'){
+      console.log("loop off");
       var loopBuffe = new TextEncoder().encode("l0");
       characteristic.writeValue(loopBuffe);
   }
   else{
+      console.log("loop on");
       var arrayBuffe = new TextEncoder().encode("l1");
       characteristic.writeValue(loopBuffe);
   }

@@ -89,6 +89,8 @@ function sendMessage(_num_str) {
   
   var text = _num_str;
   var arrayBuffe = new TextEncoder().encode(text);
+  
+  /*
   console.log(text);
   if(_num_str == '0' || _num_str == '4' || _num_str == '7' || _num_str == '8'){
       console.log("loop off");
@@ -100,10 +102,10 @@ function sendMessage(_num_str) {
       var arrayBuffe = new TextEncoder().encode("l1");
       characteristic.writeValue(loopBuffe);
   }
-  
-  setTimeout(function(){
-    characteristic.writeValue(arrayBuffe);
-  },100);
+  */
+  //setTimeout(function(){
+  characteristic.writeValue(arrayBuffe);
+  //},100);
              
   playSound(_num_str);
 

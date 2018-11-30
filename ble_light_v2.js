@@ -94,10 +94,10 @@ function sendMessage(_num_str) {
   sound_loop_state = $("check_sound_loop").prop("checked");
 
   if(light_loop_state == true){
-    characteristic.writeValue(TextEncoder().encode("l1"));
+    characteristic.writeValue(new TextEncoder().encode("l1"));
   }
   else{
-    characteristic.writeValue(TextEncoder().encode("l0"));
+    characteristic.writeValue(new TextEncoder().encode("l0"));
   }
 
   var text = _num_str;

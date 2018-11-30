@@ -40,6 +40,7 @@ $(function(){
       disconnect();
   }
 });
+});
   
 document.body.addEventListener('click', function (event) {
     if(event.target.id = "send"){

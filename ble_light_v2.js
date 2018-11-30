@@ -41,12 +41,15 @@ $(function(){
   }
 });
 });
-  
-document.body.addEventListener('click', function (event) {
-    if(event.target.id = "send"){
-      sendMessage(event.target.value);
-    }
 
+
+document.addEventListener("DOMContentLoaded", function(){
+  document.body.addEventListener('click', function (event) {
+      if(event.target.id = "send"){
+        sendMessage(event.target.value);
+      }
+
+  }, false);
 }, false);
 
 //chibi:bitに接続する

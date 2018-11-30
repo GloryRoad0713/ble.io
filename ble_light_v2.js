@@ -1,11 +1,13 @@
-var sound_links = [{link:"https://drive.google.com/uc?id=1UWVthywo-cLWRAafPUgCJDa4WnVMIPGw", name:"01"},
-                   {link:"https://drive.google.com/uc?id=11hceyP4BjvHF7cBBKHMfxPdRNtIenxG2", name:"02"},
-                   {link:"https://drive.google.com/uc?id=1-TN4fAtIb2KJkJkSeKwOT-rwcyWYsLqE", name:"03"},
-                   {link:"https://drive.google.com/uc?id=1l3yD9RbjGQaCrqpLxXKm6VKYwkdvawdZ", name:"04"},
-                   {link:"https://drive.google.com/uc?id=1-4aQLpD5XgxGBTOtKwtidITIkRpMJh2w", name:"05"},
-                   {link:"https://drive.google.com/uc?id=18LlOcMmZo2uJB_sxlsaALApnBcoFyjv9", name:"06"},
-                   {link:"https://drive.google.com/uc?id=1Lwwtjp8Ltjec4sS8qCZv66VxBq8oJSXO", name:"07"},
-                   {link:"https://drive.google.com/uc?id=1s6CBqsp3P_cqTkWA5TmYUWcQ_mfSHgOG", name:"08"}];
+var sound_links = [{link:"https://dl.dropboxusercontent.com/s/62b9cmkxx109nev/01_sound.mp3", name:"01"},
+                   {link:"https://dl.dropboxusercontent.com/s/s3fgpg3niutrljd/02_sound.mp3", name:"02"},
+                   {link:"https://dl.dropboxusercontent.com/s/j3quvvsrnqes32m/03_sound.mp3", name:"03"},
+                   {link:"https://dl.dropboxusercontent.com/s/yxrfy5kegcdug80/04_sound.mp3", name:"04"},
+                   {link:"https://dl.dropboxusercontent.com/s/e74cx8wjnbbsyb5/05_sound.mp3", name:"05"},
+                   {link:"https://dl.dropboxusercontent.com/s/0em3gqmewk91acx/06_sound.mp3", name:"06"},
+                   {link:"https://dl.dropboxusercontent.com/s/xjv58j2r600dlqr/07_sound.mp3", name:"07"},
+                   {link:"https://dl.dropboxusercontent.com/s/fi70pfrtqagbcf6/08_sound.mp3", name:"08"}];
+
+
 audio_list = new Array(8);
 for(var i=0; i < audio_list.length; i++){
     audio_list[i] = new Audio();
@@ -29,24 +31,24 @@ var light_loop_state = false;
 var sound_loop_state = false;
 var pre_play_num = "0";
 
-document.addEventListener("DOMContentLoaded", function(){
-    document.body.addEventListener('click', function (event) {
-        ble_state = $("check_ble_connect").prop("checked");
-        console.log(ble_state);
-      //console.log(event.target.value);
-        if(event.target.id = "check_ble_connect" && ble_state == true){
-          connect();
-        }
-        else if(ble_state == false){
-          disconnect();
-        }
+  document.body.addEventListener('click', function (event) {
+      ble_state = $("check_ble_connect").prop("checked");
+      console.log("ble_State = "  + ble_state);
+      console.log(jquery("check_ble_connect:checked").val());
+    
+    //console.log(event.target.value);
+      if(event.target.id = "check_ble_connect" && ble_state == true){
+        connect();
+      }
+      else if(ble_state == false){
+        disconnect();
+      }
 
-        if(event.target.id = "send"){
-          sendMessage(event.target.value);
-        }
+      if(event.target.id = "send"){
+        sendMessage(event.target.value);
+      }
 
-    }, false)
-}, false);
+  }, false)
 
 //chibi:bitに接続する
 function connect() {

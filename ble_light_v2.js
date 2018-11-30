@@ -32,22 +32,25 @@ var light_loop_state = false;
 var sound_loop_state = false;
 var pre_play_num = "0";
 
-document.body.addEventListener('click', function (event) {
-    ble_state = $("check_ble_connect").prop("checked");
-    console.log(ble_state);
-  //console.log(event.target.value);
-    if(event.target.id = "check_ble_connect" && ble_state == true){
-      connect();
-    }
-    else if(ble_state == false){
-      disconnect();
-    }
+document.addEventListener("DOMContentLoaded", function(){
+    document.body.addEventListener('click', function (event) {
+        ble_state = $("check_ble_connect").prop("checked");
+        console.log(ble_state);
+      //console.log(event.target.value);
+        if(event.target.id = "check_ble_connect" && ble_state == true){
+          connect();
+        }
+        else if(ble_state == false){
+          disconnect();
+        }
 
-    if(event.target.id = "send"){
-      sendMessage(event.target.value);
-    }
+        if(event.target.id = "send"){
+          sendMessage(event.target.value);
+        }
 
-}, false)
+    }, false)
+}, false);
+
 //chibi:bitに接続する
 function connect() {
   let options = {};

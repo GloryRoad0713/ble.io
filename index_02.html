@@ -3,8 +3,9 @@
   <head>
     <title>ble-control</title>
     <link rel="stylesheet" type="text/css" href="style_v2.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://unpkg.com/ionicons@4.4.8/dist/ionicons.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>-
     <script type="text/javascript" src="ble_light_v2.js"></script>
   </head>
   <body>
@@ -17,9 +18,9 @@
 
       <br>
 
-      <p class = "switch_text"><ion-icon name="bluetooth" class = "menu_icon"></ion-icon>Bluetooth接続</p>
-      <div class="switch">
-        <label class="switch__label">
+        <p class = "switch_text"><ion-icon name="bluetooth" class = "menu_icon"></ion-icon>Bluetooth接続</p>
+        <div class="switch">
+        <label class="switch__label" padding = "30px">
           <input type="checkbox" class="switch__input"/ id = "check_ble_connect">
           <span class="switch__content"></span>
           <span class="switch__circle"></span>
@@ -31,7 +32,6 @@
       <p class = "switch_text"><ion-icon name="infinite" class = "menu_icon"></ion-icon>光のループ再生</p>
       <div class="switch">
         <label class="switch__label">
-          <label class="switch__label">
           <input type="checkbox" class="switch__input"/ id = "check_light_loop">
           <span class="switch__content"></span>
           <span class="switch__circle"></span>
@@ -43,7 +43,6 @@
       <p class = "switch_text"><ion-icon name="infinite" class = "menu_icon"></ion-icon>音のループ再生</p>
       <div class="switch">
           <label class="switch__label">
-            <label class="switch__label">
             <input type="checkbox" class="switch__input"/ id = "check_sound_loop">
             <span class="switch__content"></span>
             <span class="switch__circle"></span>

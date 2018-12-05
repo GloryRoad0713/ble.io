@@ -44,16 +44,20 @@ $(function(){
   $("#check_light_loop").click(function(){
     if (this.checked) {
         light_loop_state = true;
+        console.log("light_loop_state is true");
     } else {
         light_loop_state = false;
+       console.log("light_loop_state is false");
     }
   });
   
   $("#check_sound_loop").click(function(){
     if (this.checked) {
         sound_loop_state = true;
+        console.log("sound_loop_state is true");
     } else {
         sound_loop_state = false;
+        console.log("sound_loop_state is false");
     }
   });
 });
@@ -111,9 +115,11 @@ function sendMessage(_num_str) {
 
   if(light_loop_state == true){
     characteristic.writeValue(new TextEncoder().encode("l1"));
+    console.log("send light loop signal")
   }
   else{
     characteristic.writeValue(new TextEncoder().encode("l0"));
+    console.log("send light not-loop signal")
   }
 
   var text = _num_str;
@@ -141,7 +147,9 @@ function playSound(_num_str){
   else{
     audio_list[Number(_num_str)].loop = false;
   }
-
+  
+  console.log("c_state = " + c_state);
+  
   if(c_state == true){
     setTimeout(function(){
       audio_list[Number(_num_str)].pause();
@@ -149,7 +157,7 @@ function playSound(_num_str){
       audio_list[Number(_num_str)].play();
     },delay_time);
   }
-  console.log(delay_time);
+  console.log("delay_time = " + delay_time);
 
   pre_play_num = _num_str;
 

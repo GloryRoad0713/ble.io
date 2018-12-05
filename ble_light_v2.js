@@ -38,8 +38,9 @@ $(function(){
         connect();
     } else {
         disconnect();
-    }
+    }    
   });
+  
   
   $("#check_light_loop").click(function(){
     if (this.checked) {
@@ -60,17 +61,23 @@ $(function(){
         console.log("sound_loop_state is false");
     }
   });
+  
+  $("#send").click(function(event){
+    sendMessage(event.target.value);
+    console.log("pressed button");
+  });
+  
 });
 
-
+/*
 document.addEventListener("DOMContentLoaded", function(){
   document.body.addEventListener('click', function (event) {
       if(event.target.id = "send"){
         sendMessage(event.target.value);
       }
-
   }, false);
 }, false);
+*/
 
 //chibi:bitに接続する
 function connect() {

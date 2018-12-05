@@ -106,8 +106,8 @@ function connect() {
 function sendMessage(_num_str) {
   //console.log(_num_str);
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
-  light_loop_state = $("check_light_loop").prop("checked");
-  sound_loop_state = $("check_sound_loop").prop("checked");
+  //light_loop_state = $("check_light_loop").prop("checked");
+  //sound_loop_state = $("check_sound_loop").prop("checked");
 
   if(light_loop_state == true){
     characteristic.writeValue(new TextEncoder().encode("l1"));
@@ -130,8 +130,8 @@ function sendMessage(_num_str) {
 function playSound(_num_str){
   var c_name = "check" + _num_str;
   var o_name = "output" + _num_str;
-  //var c_state = $("[id=" + c_name + "]").prop("checked");
-  //var delay_time = $("[id=" + o_name + "]").val()*1000;
+  var c_state = $("[id=" + c_name + "]").prop("checked");
+  var delay_time = $("[id=" + o_name + "]").val()*1000;
 
   audio_list[Number(pre_play_num)].pause();
 

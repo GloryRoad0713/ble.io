@@ -34,12 +34,28 @@ var pre_play_num = "0";
 
 $(function(){
   $("#check_ble_connect").click(function(){
-  if (this.checked) {
-      connect();
-  } else {
-      disconnect();
-  }
-});
+    if (this.checked) {
+        connect();
+    } else {
+        disconnect();
+    }
+  });
+  
+  $("#check_light_loop").click(function(){
+    if (this.checked) {
+        light_loop_state = true;
+    } else {
+        light_loop_state = false;
+    }
+  });
+  
+  $("#check_sound_loop").click(function(){
+    if (this.checked) {
+        sound_loop_state = true;
+    } else {
+        sound_loop_state = false;
+    }
+  });
 });
 
 
@@ -105,16 +121,17 @@ function sendMessage(_num_str) {
 
   setTimeout(function(){
     characteristic.writeValue(arrayBuffe);
-  },50);
+  },100);
 
   playSound(_num_str);
-
 }
+
+
 function playSound(_num_str){
   var c_name = "check" + _num_str;
   var o_name = "output" + _num_str;
-  var c_state = $("[id=" + c_name + "]").prop("checked");
-  var delay_time = $("[id=" + o_name + "]").val()*1000;
+  //var c_state = $("[id=" + c_name + "]").prop("checked");
+  //var delay_time = $("[id=" + o_name + "]").val()*1000;
 
   audio_list[Number(pre_play_num)].pause();
 

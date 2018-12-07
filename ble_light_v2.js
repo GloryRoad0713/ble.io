@@ -123,7 +123,11 @@ function sendMessage(_num_str) {
   //sound_loop_state = $("check_sound_loop").prop("checked");
   
   console.log(_num_str)
-
+  if (typeof _num_str === "undefined"){
+    console.log("_num_strは未定義")
+    return;
+  }
+    
   if(light_loop_state == true){
     characteristic.writeValue(new TextEncoder().encode("l1"));
     console.log("send light loop signal")

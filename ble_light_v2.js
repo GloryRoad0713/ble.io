@@ -62,22 +62,24 @@ $(function(){
     }
   });
   
+  /*
   $("#send").click(function(event){
     sendMessage(event.target.value);
     console.log("pressed button");
   });
-  
+  */
 });
 
-/*
+
 document.addEventListener("DOMContentLoaded", function(){
   document.body.addEventListener('click', function (event) {
       if(event.target.id = "send"){
+        console.log("pressed button");
         sendMessage(event.target.value);
       }
   }, false);
 }, false);
-*/
+
 
 //chibi:bitに接続する
 function connect() {

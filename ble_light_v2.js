@@ -121,6 +121,8 @@ function sendMessage(_num_str) {
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   //light_loop_state = $("check_light_loop").prop("checked");
   //sound_loop_state = $("check_sound_loop").prop("checked");
+  
+  console.log(_num_str)
 
   if(light_loop_state == true){
     characteristic.writeValue(new TextEncoder().encode("l1"));
@@ -136,7 +138,7 @@ function sendMessage(_num_str) {
 
   setTimeout(function(){
     characteristic.writeValue(arrayBuffe);
-  },100);
+  },200);
 
   playSound(_num_str);
 }

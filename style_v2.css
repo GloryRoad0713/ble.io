@@ -1,7 +1,7 @@
 
 :root {
   --transition-time: 0.3s;
-	--font-def-size: 30px;
+	--font-def-size: 35px;
 	--margin-side: 40px;
   --insert-color: #99B6BD;
 }
@@ -73,7 +73,7 @@ hr {
 
   position: relative;
 	float:right;
-	margin-top: -55px;
+	margin-top: -80px;
 	margin-right: var(--margin-side);
   margin-bottom: 18px;
   height:55px;
@@ -81,7 +81,7 @@ hr {
 
 .switch__label {
   text-align: right;
-	width: 80px;
+	width: 110px;
 	position: relative;
 	display: inline-block;
   margin-top: -10px;
@@ -96,14 +96,16 @@ hr {
 .switch_text{
 	font-size: var(--font-def-size);
 	margin-left: var(--margin-side);
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .switch__content {
 	display: block;
   cursor: pointer;
   position: relative;
-  border-radius: 30px;
-  height: 50px;
+  border-radius: 35px;
+  height: 70px;
 	overflow: hidden;
 }
 .switch__content:before {
@@ -115,7 +117,7 @@ hr {
 	top: 0;
 	left: 0;
 	border: 1.5px solid #E5E5EA;
-	border-radius: 30px;
+	border-radius: 35px;
 	background-color: #fff;
 }
 .switch__content:after {
@@ -145,8 +147,8 @@ hr {
 	position: absolute;
 	-webkit-box-shadow: 0 2px 6px #999;
 	        box-shadow: 0 2px 6px #999;
-	width: 47px;
-	height: 47px;
+	width: 67px;
+	height: 67px;
 	-webkit-border-radius: 35px;
 	        border-radius: 35px;
 	background-color: #fff;
@@ -157,7 +159,7 @@ hr {
 	        transition: all var(--transition-time);
 }
 .switch__input:checked ~ .switch__circle {
-	left: 34px;
+	left: 45px;
 }
 
 .switch__input:checked ~ .switch__content:after {

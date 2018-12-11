@@ -75,18 +75,18 @@
       <hr>
       <p class = "Catergory_text"><ion-icon name="flask" class = "menu_icon"></ion-icon>ブレンドの割合 : <output id="output_blend">50</output><span>%</span></p>
       <div class="base_setting_bar">
-          <input id = "time" type="range" class="input-range" value="50" min="0" max="100"  step="1" data-unit="%"
+          <input id = "blend" type="range" class="base-input-range" value="50" min="0" max="100"  step="1" data-unit="%"
               oninput="document.getElementById('output_blend').value=this.value">
       </div>
       <hr>
 
       <p class = "Catergory_text"><ion-icon name="flashlight" class = "menu_icon"></ion-icon></ion-icon>明るさ　上部：<output id="output_up">100</output><span>%</span>　下部：<output id="output_down">100</output><span>%</span></p>
       <div class="base_setting_bar">
-          <input id = "time" type="range" class="input-range" value="100" min="0" max="100"  step="1" data-unit="%"
+          <input id = "bright_up" type="range" class="base-input-range" value="100" min="0" max="100"  step="1" data-unit="%"
               oninput="document.getElementById('output_up').value=this.value">
       </div>
       <div class="base_setting_bar">
-          <input id = "time" type="range" class="input-range" value="100" min="0" max="100"  step="1" data-unit="%"
+          <input id = "bright_down" type="range" class="base-input-range" value="100" min="0" max="100"  step="1" data-unit="%"
               oninput="document.getElementById('output_down').value=this.value">
       </div>
       <hr>

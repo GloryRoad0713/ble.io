@@ -23,7 +23,7 @@ html, body {
 	height: 100%;
 	width: 100%;
 	font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
-	min-width: 1040px;
+	min-width: 1080px;
 	background-color: #E5E5EA;
 　position: relative;
 }
@@ -32,7 +32,7 @@ html, body {
 	margin: auto;
 	position: relative;
 	min-height: 100%;
-	max-width: 1040px;
+	max-width: 1080px;
 	box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
 	background-color: #f0f0f0;
 	position: relative;

@@ -379,9 +379,9 @@ select {
  	background: #ffffff;
  }
 
-/**/
+/*全体に適用するコントロールバーのCSS*/
 .base_setting_bar {
- 	width: 130%;
+ 	width: 90%;
   margin-left:  var(--margin-side);
   /*text-align: center;*/
 	/*position: relative;*/
@@ -394,6 +394,13 @@ select {
   font-size: calc(var(--font-def-size) * 0.7);
 }
 
+
+.base_setting_bar input[type=range]{
+  height: 20px;
+  -webkit-appearance: none;
+  margin: 2em auto;
+  width: 100%;
+}
 
 /* ここから下がコントロールバーのCSS　*/
 input[type=range] {

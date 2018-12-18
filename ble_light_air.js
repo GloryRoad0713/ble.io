@@ -43,20 +43,20 @@ $(function(){
 
   //光の位置の変更関係
   $('#p01_text').change(function() {
-    changelightPosition()
+    changelightPosition();
   });
   $('#p02_text').change(function() {
-    changelightPosition()
+    changelightPosition();
   });
   $('#p03_text').change(function() {
-    changelightPosition()
+    changelightPosition();
   });
   $('#p04_text').change(function() {
-    changelightPosition()
+    changelightPosition();
   });
 
   $("#base_light").click(function(){
-
+    changeBageLight();
   });
 
 /*
@@ -91,7 +91,7 @@ $(function(){
 
 document.addEventListener("DOMContentLoaded", function(){
   document.body.addEventListener('click', function (event) {
-      if(event.target.id = "send"){
+      if(event.target.id == "send"){
         console.log("pressed button");
         sendMessage(event.target.value);
       }

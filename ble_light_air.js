@@ -223,6 +223,6 @@ function changelightPosition(){
 }
 
 function changeBageLight(){
-  var selected_base = $("input[name='radio1']:checked").val()
-  console.log("selected_base = " selected_base);
+  var selected_base = $("input[name='radio1']:checked").val();
+  console.log("selected_base = " + selected_base);
 }

@@ -32,12 +32,12 @@
       <p class = "Catergory_text"><ion-icon name="infinite" class = "menu_icon"></ion-icon>割り込む光のループ再生回数</p>
       <div class="custom">
         <select name="options" id = "light_loop_num">
-          <option value="0">1回</option>
+          <option value="1">1回</option>
           <option value="2">2回</option>
           <option value="3">3回</option>
           <option value="4">4回</option>
           <option value="5">5回</option>
-          <option value="∞">常にループ</option>
+          <option value="0">常にループ</option>
         </select>
       </div>
 
@@ -46,12 +46,12 @@
       <p class = "Catergory_text"><ion-icon name="infinite" class = "menu_icon"></ion-icon>割り込む音のループ再生</p>
       <div class="custom">
         <select name="options"  id = "sound_loop_num">
-          <option value="0">1回</option>
+          <option value="1">1回</option>
           <option value="2">2回</option>
           <option value="3">3回</option>
           <option value="4">4回</option>
           <option value="5">5回</option>
-          <option value="∞">常にループ</option>
+          <option value="0">常にループ</option>
         </select>
       </div>
 
@@ -59,23 +59,23 @@
       <p class = "Catergory_text"><ion-icon name="locate" class = "menu_icon"></ion-icon>LEDの位置</p>
       <div class="cp_iptxt">
         <label class="ef"><span>LED01</span>
-        <input type="text"  placeholder="10">
+        <input type="text"  placeholder="10" id  = "p01_text">
         </label>
         <label class="ef"><span>LED02</span>
-        <input type="text"  placeholder="30">
+        <input type="text"  placeholder="30" id  = "p02_text">
         </label>
         <label class="ef"><span>LED03</span>
-        <input type="text"  placeholder="20">
+        <input type="text"  placeholder="20" id  = "p03_text">
         </label>
         <label class="ef"><span>セット数</span>
-        <input type="text"  placeholder="1">
+        <input type="text"  placeholder="1" id  = "p04_text">
         </label>
       </div>
 
       <hr>
 
       <p class = "Catergory_text"><ion-icon name="power" class = "menu_icon"></ion-icon>ベースの光</p>
-      <ul class="radios">
+      <ul class="radios" id = "base_light">
           <li>
               <input type="radio" name="radio1" value="1" id="radio1" checked="checked" />
               <label for="radio1">1</label>
@@ -93,7 +93,7 @@
               <label for="radio4">4</label>
           </li>
           <li>
-              <input type="radio" name="radio1" value="-1" id="radio_none" />
+              <input type="radio" name="radio1" value="0" id="radio_none" />
               <label for="radio5">なし</label>
           </li>
       </ul>

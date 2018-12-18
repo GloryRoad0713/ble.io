@@ -73,7 +73,7 @@ $(function(){
 
 document.addEventListener("DOMContentLoaded", function(){
   document.body.addEventListener('click', function (event) {
-      if(event.target.id = "send"){
+      if(event.target.id == "send"){
         console.log("pressed button");
         sendMessage(event.target.value);
       }

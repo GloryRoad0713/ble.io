@@ -38,11 +38,29 @@ $(function(){
         connect();
     } else {
         disconnect();
-    }    
+    }
   });
-  
-  
-  $("#check_light_loop").click(function(){
+
+  //光の位置の変更関係
+  $('#p01_text').change(function() {
+    changelightPosition()
+  });
+  $('#p02_text').change(function() {
+    changelightPosition()
+  });
+  $('#p03_text').change(function() {
+    changelightPosition()
+  });
+  $('#p04_text').change(function() {
+    changelightPosition()
+  });
+
+  $("#base_light").click(function(){
+
+  });
+
+/*
+  $("#light_loop_num").click(function(){
     if (this.checked) {
         light_loop_state = true;
         console.log("light_loop_state is true");
@@ -51,8 +69,8 @@ $(function(){
        console.log("light_loop_state is false");
     }
   });
-  
-  $("#check_sound_loop").click(function(){
+
+  $("#sound_loop_num").click(function(){
     if (this.checked) {
         sound_loop_state = true;
         console.log("sound_loop_state is true");
@@ -61,7 +79,7 @@ $(function(){
         console.log("sound_loop_state is false");
     }
   });
-  
+*/
   /*
   $("#send").click(function(event){
     sendMessage(event.target.value);
@@ -121,20 +139,25 @@ function sendMessage(_num_str) {
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   //light_loop_state = $("check_light_loop").prop("checked");
   //sound_loop_state = $("check_sound_loop").prop("checked");
-  
+
+
+
   console.log(_num_str)
   if (typeof _num_str === "undefined"){
     console.log("_num_strは未定義")
     return;
   }
-    
-  if(light_loop_state == true){
-    characteristic.writeValue(new TextEncoder().encode("l1"));
-    console.log("send light loop signal")
+
+  //光のループ処理関係
+  var select_light_loop_num = $("#light_loop_num").val();
+  console.log("select_light_loop_num = " + select_light_loop_num)
+  if(select_light_loop_num != 0){
+    characteristic.writeValue(new TextEncoder().encode("l" + String(select_light_loop_num)));
+    console.log("send light " + String(select_light_loop_num) + " times loop signal")
   }
   else{
-    characteristic.writeValue(new TextEncoder().encode("l0"));
-    console.log("send light not-loop signal")
+    characteristic.writeValue(new TextEncoder().encode("ln"));
+    console.log("send light loop signal")
   }
 
   var text = _num_str;
@@ -147,7 +170,7 @@ function sendMessage(_num_str) {
   playSound(_num_str);
 }
 
-
+//音の処理
 function playSound(_num_str){
   var c_name = "check" + _num_str;
   var o_name = "output" + _num_str;
@@ -156,15 +179,19 @@ function playSound(_num_str){
 
   audio_list[Number(pre_play_num)].pause();
 
-  if(sound_loop_state == true){
-    audio_list[Number(_num_str)].loop = true;
+  //音のループ処理関係
+  var select_sound_loop_num = $("#sound_loop_num").val();
+  if(select_sound_loop_num != 0){
+    //characteristic.writeValue(new TextEncoder().encode("l" + String(select_sound_loop_num)));
+    //console.log("send sound " + String(select_sound_loop_num) + " times loop signal")
   }
   else{
-    audio_list[Number(_num_str)].loop = false;
+    //characteristic.writeValue(new TextEncoder().encode("ln"));
+    //console.log("send sound loop signal")
   }
-  
+
   console.log("c_state = " + c_state);
-  
+
   if(c_state == true){
     setTimeout(function(){
       audio_list[Number(_num_str)].pause();
@@ -177,9 +204,25 @@ function playSound(_num_str){
   pre_play_num = _num_str;
 
 }
+
 //BEL切断処理
 function disconnect() {
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected) return ;
   bluetoothDevice.gatt.disconnect();
   alert("BLE接続を切断しました。")
+}
+
+//LEDの光位置の変更処理
+function changelightPosition(){
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
+
+  var position_sgiganl = "p" + $("#p01_text").val() + "," + $("#p02_text").val() + "," + $("#p03_text").val() + "," + $("#p04_text").val();
+  console.log("position_sgiganl = " + position_sgiganl);
+  characteristic.writeValue(new TextEncoder().encode(position_sgiganl));
+  console.log("send position signal")
+}
+
+function changeBageLight(){
+  var selected_base = $("input[name='radio1']:checked").val()
+  console.log("selected_base = " selected_base)
 }

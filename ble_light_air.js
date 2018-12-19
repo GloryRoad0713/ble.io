@@ -59,10 +59,21 @@ $(function(){
     changeBageLight();
   });
 
-  $("#base_setting_bar").on( 'input', function () {
+  $("#blend").on( 'input', function () {
     changeBlendValue();
   	//var val = $(this).val();
-  } );
+  });
+
+  $("#bright_up").on( 'input', function () {
+    changeBlightValue();
+  	//var val = $(this).val();
+  });
+
+  $("#bright_down").on( 'input', function () {
+    changeBlightValue();
+    //var val = $(this).val();
+  });
+
 /*
   $("#send").click(function(event){
     sendInterruptLight(event.target.id );
@@ -205,12 +216,20 @@ function changelightPosition(){
 
 //ベースの光の変更処理
 function changeBageLight(){
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   var selected_base = $("input[name='radio1']:checked").val();
   characteristic.writeValue(new TextEncoder().encode("l" + String(selected_base)));
   console.log("selected_base = " + selected_base);
 }
 
 function changeBlendValue(){
-  var blend_value = $("#base_setting_bar").val();
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
+  var blend_value = $("#blend").val();
   console.log("blend_value = " + blend_value);
+}
+
+function changeBlightValue(){
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
+  var bright_value = "br" + $("#bright_up").val() + "," + $("#bright_down").val();
+  console.log("bright value = " + bright_value);
 }

@@ -276,7 +276,7 @@ select {
   padding-left: 20px;
 	transition: 0.3s;
 	letter-spacing: 1px;
-	color: #aaaaaa;
+	/*color: #2a2a2a;*/
 	border: 1px solid #D5D5DA;
 	border-radius: 4px;
 }

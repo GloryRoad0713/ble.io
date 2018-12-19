@@ -90,6 +90,12 @@ $(function(){
     sendInterruptLight(val);
   });
 
+  $("#send1").click(function(event){
+    var val = $(this).val()
+    console.log("InterruptLight value = " + val);
+    sendInterruptLight(val);
+  });
+
   $("#send2").click(function(event){
     var val = $(this).val()
     console.log("InterruptLight value = " + val);
@@ -97,12 +103,6 @@ $(function(){
   });
 
   $("#send3").click(function(event){
-    var val = $(this).val()
-    console.log("InterruptLight value = " + val);
-    sendInterruptLight(val);
-  });
-
-  $("#send4").click(function(event){
     var val = $(this).val()
     console.log("InterruptLight value = " + val);
     sendInterruptLight(val);

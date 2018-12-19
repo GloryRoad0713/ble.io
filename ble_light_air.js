@@ -59,39 +59,40 @@ $(function(){
     changeBageLight();
   });
 
-  $("#blend").on( 'input', function () {
-    changeBlendValue();
-  	//var val = $(this).val();
+  $("#blend").on( 'input', function (event) {
+    changeBlendValue(event);
+  });
+
+  $("#blend").on( 'change', function (event) {
+    changeBlendValue(event);
   });
 
   $("#bright_up").on( 'input', function (event) {
     changeBlightValue(event);
-  	//var val = $(this).val();
   });
 
   $("#bright_up").on( 'change', function (event) {
     changeBlightValue(event);
-    //var val = $(this).val();
   });
 
   $("#bright_down").on( 'input', function (event) {
     changeBlightValue(event);
-    //var val = $(this).val();
   });
 
   $("#bright_down").on( 'change', function (event) {
     changeBlightValue(event);
-    //var val = $(this).val();
   });
 
-/*
+
   $("#send").click(function(event){
-    sendInterruptLight(event.target.id );
+    var val = $(this).val()
+    console.log("nterruptLight value = " + val);
+    sendInterruptLight(val);
   });
-*/
+
 });
 
-
+/*
 document.addEventListener("DOMContentLoaded", function(){
   document.body.addEventListener('click', function (event) {
       if(event.target.id == "send"){
@@ -100,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
   }, false);
 }, false);
-
+*/
 
 //chibi:bitに接続する
 function connect() {
@@ -232,11 +233,20 @@ function changeBageLight(){
   console.log("selected_base = " + selected_base);
 }
 
-function changeBlendValue(){
+function changeBlendValue(_event){
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   var blend_value = "b" + $("#blend").val();
-  console.log("blend_value = " + blend_value);
-  characteristic.writeValue(new TextEncoder().encode(blend_value));
+  if(_event.type == "input"){
+    console.log("【input】blend value = " + blend_value);
+    characteristic.writeValue(new TextEncoder().encode(blend_value));
+  }
+  else{
+    setTimeout(function(){
+      console.log("【changed】blend value = " + blend_value);
+      characteristic.writeValue(new TextEncoder().encode(blend_value));
+    },200);
+  }
+}
 }
 
 function changeBlightValue(_event){

@@ -169,7 +169,7 @@ function sendInterruptLight(_num_str) {
 */
 
   //光のループ処理関係
-  var select_light_loop_num = "l" + $("#light_loop_num").val();
+  var select_light_loop_num = $("#light_loop_num").val();
   /*
   console.log("select_light_loop_num = " + select_light_loop_num)
   //if(select_light_loop_num != 0){

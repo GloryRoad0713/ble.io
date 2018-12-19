@@ -59,13 +59,18 @@ $(function(){
     changeBageLight();
   });
 
+  $("#base_setting_bar").on( 'input', function () {
+    changeBlendValue();
+  	//var val = $(this).val();
+  } );
+/*
   $("#send").click(function(event){
     sendInterruptLight(event.target.id );
   });
-
+*/
 });
 
-/*
+
 document.addEventListener("DOMContentLoaded", function(){
   document.body.addEventListener('click', function (event) {
       if(event.target.id == "send"){
@@ -74,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
   }, false);
 }, false);
-*/
+
 
 //chibi:bitに接続する
 function connect() {
@@ -135,11 +140,12 @@ function sendInterruptLight(_num_str) {
     console.log("send light loop signal")
   }
 
-  var text = _num_str;
+  var text = "i" + _num_str;
   var arrayBuffe = new TextEncoder().encode(text);
 
   setTimeout(function(){
     characteristic.writeValue(arrayBuffe);
+    console.log("send InterruptLight signal = " + text)
   },200);
 
   playSound(_num_str);
@@ -194,10 +200,17 @@ function changelightPosition(){
   var position_sgiganl = "p" + $("#p01_text").val() + "," + $("#p02_text").val() + "," + $("#p03_text").val() + "," + $("#p04_text").val();
   console.log("position_sgiganl = " + position_sgiganl);
   characteristic.writeValue(new TextEncoder().encode(position_sgiganl));
-  console.log("send position signal")
+  //console.log("send position signal")
 }
 
+//ベースの光の変更処理
 function changeBageLight(){
   var selected_base = $("input[name='radio1']:checked").val();
+  characteristic.writeValue(new TextEncoder().encode("l" + String(selected_base)));
   console.log("selected_base = " + selected_base);
+}
+
+function changeBlendValue(){
+  var blend_value = $("#base_setting_bar").val();
+  console.log("blend_value = " + blend_value);
 }

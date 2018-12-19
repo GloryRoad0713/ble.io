@@ -265,6 +265,27 @@ select {
 	outline: none;
 	box-shadow: 0 0 5px 1px rgba(230,52,98, .5);
 }
+
+.cp_iptxt input[type='number'] {
+	/*font: 15px/24px sans-serif;*/
+  font-size: var(--font-def-size);
+	box-sizing: border-box;
+	width: 100%;
+  height: 75px;
+	/*padding: 0.1em;*/
+  padding-left: 20px;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: 1px solid #D5D5DA;
+	border-radius: 4px;
+}
+
+.ef input[type='number']:focus {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(230,52,98, .5);
+}
 /******ボタン********/
 .button_container{
 	margin-bottom:  calc(var(--margin-side) + 10px);

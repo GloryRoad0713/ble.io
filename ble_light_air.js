@@ -59,45 +59,22 @@ $(function(){
     changeBageLight();
   });
 
-/*
-  $("#light_loop_num").click(function(){
-    if (this.checked) {
-        light_loop_state = true;
-        console.log("light_loop_state is true");
-    } else {
-        light_loop_state = false;
-       console.log("light_loop_state is false");
-    }
+  $("#send").click(function(event){
+    sendInterruptLight(event.target.id );
   });
 
-  $("#sound_loop_num").click(function(){
-    if (this.checked) {
-        sound_loop_state = true;
-        console.log("sound_loop_state is true");
-    } else {
-        sound_loop_state = false;
-        console.log("sound_loop_state is false");
-    }
-  });
-*/
-  /*
-  $("#send").click(function(event){
-    sendMessage(event.target.value);
-    console.log("pressed button");
-  });
-  */
 });
 
-
+/*
 document.addEventListener("DOMContentLoaded", function(){
   document.body.addEventListener('click', function (event) {
       if(event.target.id == "send"){
         console.log("pressed button");
-        sendMessage(event.target.value);
+        sendInterruptLight(event.target.value);
       }
   }, false);
 }, false);
-
+*/
 
 //chibi:bitに接続する
 function connect() {
@@ -134,19 +111,17 @@ function connect() {
   });
 }
 //ESP32に値を送信
-function sendMessage(_num_str) {
+function sendInterruptLight(_num_str) {
   //console.log(_num_str);
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
-  //light_loop_state = $("check_light_loop").prop("checked");
-  //sound_loop_state = $("check_sound_loop").prop("checked");
 
-
-
+/*
   console.log(_num_str)
   if (typeof _num_str === "undefined"){
     console.log("_num_strは未定義")
     return;
   }
+*/
 
   //光のループ処理関係
   var select_light_loop_num = $("#light_loop_num").val();

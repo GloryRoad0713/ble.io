@@ -226,10 +226,12 @@ function changeBlendValue(){
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   var blend_value = $("#blend").val();
   console.log("blend_value = " + blend_value);
+  characteristic.writeValue(new TextEncoder().encode(blend_value));
 }
 
 function changeBlightValue(){
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   var bright_value = "br" + $("#bright_up").val() + "," + $("#bright_down").val();
   console.log("bright value = " + bright_value);
+  characteristic.writeValue(new TextEncoder().encode(bright_value));
 }

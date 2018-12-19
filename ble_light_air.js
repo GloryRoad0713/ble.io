@@ -247,7 +247,7 @@ function changeBlendValue(_event){
     },200);
   }
 }
-}
+
 
 function changeBlightValue(_event){
   console.log(_event.type);

@@ -170,18 +170,19 @@ function sendInterruptLight(_num_str) {
 
   //光のループ処理関係
   var select_light_loop_num = "l" + $("#light_loop_num").val();
+  /*
   console.log("select_light_loop_num = " + select_light_loop_num)
   //if(select_light_loop_num != 0){
   characteristic.writeValue(new TextEncoder().encode(select_light_loop_num));
   console.log("send light " + String(select_light_loop_num) + " times loop signal")
-/*
+
   }
   else{
     characteristic.writeValue(new TextEncoder().encode("ln"));
     console.log("send light loop signal")
   }
 */
-  var text = "i" + _num_str;
+  var text = "i" + _num_str + "," + select_light_loop_num;
   var arrayBuffe = new TextEncoder().encode(text);
 
   setTimeout(function(){

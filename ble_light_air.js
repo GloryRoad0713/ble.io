@@ -84,27 +84,27 @@ $(function(){
   });
 
 
-  $("#send1").click(function(event){
+  $("#send0").click(function(event){
     var val = $(this).val()
-    console.log("nterruptLight value = " + val);
+    console.log("InterruptLight value = " + val);
     sendInterruptLight(val);
   });
 
   $("#send2").click(function(event){
     var val = $(this).val()
-    console.log("nterruptLight value = " + val);
+    console.log("InterruptLight value = " + val);
     sendInterruptLight(val);
   });
 
   $("#send3").click(function(event){
     var val = $(this).val()
-    console.log("nterruptLight value = " + val);
+    console.log("InterruptLight value = " + val);
     sendInterruptLight(val);
   });
 
   $("#send4").click(function(event){
     var val = $(this).val()
-    console.log("nterruptLight value = " + val);
+    console.log("InterruptLight value = " + val);
     sendInterruptLight(val);
   });
 
@@ -169,17 +169,18 @@ function sendInterruptLight(_num_str) {
 */
 
   //光のループ処理関係
-  var select_light_loop_num = $("#light_loop_num").val();
+  var select_light_loop_num = "l" + $("#light_loop_num").val();
   console.log("select_light_loop_num = " + select_light_loop_num)
-  if(select_light_loop_num != 0){
-    characteristic.writeValue(new TextEncoder().encode("l" + String(select_light_loop_num)));
-    console.log("send light " + String(select_light_loop_num) + " times loop signal")
+  //if(select_light_loop_num != 0){
+  characteristic.writeValue(new TextEncoder().encode(select_light_loop_num));
+  console.log("send light " + String(select_light_loop_num) + " times loop signal")
+/*
   }
   else{
     characteristic.writeValue(new TextEncoder().encode("ln"));
     console.log("send light loop signal")
   }
-
+*/
   var text = "i" + _num_str;
   var arrayBuffe = new TextEncoder().encode(text);
 

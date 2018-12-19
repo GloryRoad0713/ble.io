@@ -240,9 +240,17 @@ function changeBlendValue(){
 }
 
 function changeBlightValue(_event){
-  console.log(_event);
+  console.log(_event.type);
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   var bright_value = "br" + $("#bright_up").val() + "," + $("#bright_down").val();
-  console.log("bright value = " + bright_value);
-  characteristic.writeValue(new TextEncoder().encode(bright_value));
+  if(_event.type == "input"){
+    console.log("【input】bright value = " + bright_value);
+    characteristic.writeValue(new TextEncoder().encode(bright_value));
+  }
+  else{
+    setTimeout(function(){
+      console.log("【changed】bright value = " + bright_value);
+      characteristic.writeValue(new TextEncoder().encode(bright_value));
+    },200);
+  }
 }

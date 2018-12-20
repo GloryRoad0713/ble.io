@@ -224,15 +224,17 @@ function playSound(_num_str){
 
 function playSoundLoop(_num, _count){
   audio_list[_num].pause();
-  audio_count[_num] = 0;
+  audio_count[_num] = 1;
 
   var timerId = setInterval(function(){
+    audio_list[_num].play();
     audio_list[_num].currentTime = 0;
 
+/*
     if(audio_count[_num] == 0){
-      audio_list[_num].play();
-    }
 
+    }
+*/
     console.log(audio_count[_num] + ", _count = " + _count);
 
     audio_count[_num]++;

@@ -19,7 +19,7 @@ for(var i=0; i < audio_list.length; i++){
     audio_list[i].addEventListener("loadedmetadata", function() {
       audio_duration[i] = audio_list[i].duration * 1000;
       console.log(audio_duration[i]);
-    }  
+    }, false);
 
     //console.log(sound_links[i].link);
 }

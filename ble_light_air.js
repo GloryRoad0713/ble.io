@@ -202,10 +202,11 @@ function playSound(_num_str){
   var c_state = $("[id=" + c_name + "]").prop("checked");
   var delay_time = $("[id=" + o_name + "]").val()*1000;
 
-  audio_list[pre_play_num].pause();
-  audio_list[pre_play_num].currentTime = 0;
-  audio_count[pre_play_num] = 10000;
-
+  if(0 <= pre_play_num){}
+    audio_list[pre_play_num].pause();
+    audio_list[pre_play_num].currentTime = 0;
+    audio_count[pre_play_num] = 10000;
+  } 
   //音のループ処理関係
   var select_sound_loop_num = $("#sound_loop_num").val();
 
@@ -236,7 +237,7 @@ function playSoundLoop(_num, _count){
 
     audio_count[_num]++;
     if (audio_count[_num] < _count) clearInterval(this);
-  },audio_list[_num].duration * 1000 - 5)
+  },audio_list[_num].duration * 1000 - 75)
   //}duration
 }
 

@@ -228,7 +228,7 @@ function playSoundLoop(_num, _count){
 
   var timerId = setInterval(function(){
     audio_list[_num].play();
-    audio_list[_num].currentTime = 200;
+    audio_list[_num].currentTime = 0;
     console.log(audio_count[_num] + ", _count = " + _count);
 
     audio_count[_num]++;

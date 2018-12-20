@@ -200,7 +200,7 @@ function playSound(_num_str){
 
   audio_list[Number(pre_play_num)].pause();
   audio_list[Number(pre_play_num)].currentTime = 0;
-  audio_count[_num] = 10000;
+  audio_count[num] = 10000;
 
   //音のループ処理関係
   var select_sound_loop_num = $("#sound_loop_num").val();

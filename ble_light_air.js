@@ -219,7 +219,7 @@ function playSound(_num_str){
 function playSoundLoop(_num, _count){
   audio_list[_num].pause();
   audio_count[_num] = 0;
-  console.log(audio_duration[_num]);
+  console.log(audio_duration[_num] - 5);
   setInterval(function(){
     audio_list[_num].currentTime = 0;
 
@@ -230,7 +230,7 @@ function playSoundLoop(_num, _count){
 
     audio_count[_num]++;
     if (audio_count[_num] > _count) clearInterval(this);
-  },audio_duration[_num] - 0.05)
+  },1000)
   //}
 }
 

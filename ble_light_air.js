@@ -235,8 +235,8 @@ function playSoundLoop(_num, _count){
 
     audio_count[_num]++;
     if (audio_count[_num] > _count) clearInterval(this);
-  },audio_list[i].duration * 1000 - 5)
-  //}
+  },audio_list[_num].duration * 1000 - 5)
+  //}duration
 }
 
 //BEL切断処理

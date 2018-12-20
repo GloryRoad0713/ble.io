@@ -10,13 +10,17 @@ var sound_links = [{link:"https://dl.dropboxusercontent.com/s/62b9cmkxx109nev/01
 
 audio_list = new Array(8);
 audio_duration = new Array(8);
+audio_count = new Array(8);
 for(var i=0; i < audio_list.length; i++){
     audio_list[i] = new Audio();
     audio_list[i].src = sound_links[i].link;
     audio_list[i].preload ="auto";
     audio_duration[i] = audio_list[i].duration;
+    audio_count[i] = 0;
     //console.log(sound_links[i].link);
 }
+
+//var audio_count = 0;
 
 var bluetoothDevice;
 var characteristic;
@@ -195,29 +199,52 @@ function playSound(_num_str){
   var delay_time = $("[id=" + o_name + "]").val()*1000;
 
   audio_list[Number(pre_play_num)].pause();
+  audio_list[Number(pre_play_num)].currentTime = 0;
+  audio_count[_num] = 100;
 
   //音のループ処理関係
   var select_sound_loop_num = $("#sound_loop_num").val();
-  if(select_sound_loop_num != "n"){
-    audio_list[Number(num)].loop = true;
+
+    //audio_list[Number(num)].loop = true;
   }
   else{
-    audio_list[Number(num)].loop = false;
+    //audio_list[Number(num)].loop = false;
   }
 
   console.log("c_state = " + c_state);
 
   if(c_state == true){
-    setTimeout(function(){
-      audio_list[Number(num)].pause();
-      audio_list[Number(num)].currentTime = 0;
-      audio_list[Number(num)].play();
-    },delay_time);
+    if(select_sound_loop_num == "n"){
+      setTimeout(function(){
+
+      },delay_time);
+    }
+    else{
+      playSoundLoop(num, select_sound_loop_num);
+    }
   }
   console.log("delay_time = " + delay_time);
 
   pre_play_num = num;
 
+}
+
+function playSoundLoop(_num, _count){
+  audio_list[_num].pause();
+  audio_count[_num] = 0;
+  console.log(audio_duration[_num]);
+  setInterval(function(){
+    audio_list[_num].currentTime = 0;
+
+    if(audio_count == 0){
+      audio_list[_num].play();
+    }
+    console.log(audio_count[_num]);
+
+    audio_count[_num]++;
+    if (audio_count[_num] > _count) clearInterval(this);
+  },audio_duration[_num] - 0.05)
+  //}
 }
 
 //BEL切断処理

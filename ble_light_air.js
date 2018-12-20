@@ -196,15 +196,15 @@ function sendInterruptLight(_num_str) {
 
 //音の処理
 function playSound(_num_str){
-  var num = Number(_num_str) - 1;
+  var num = Number(_num_str) - 11;
   var c_name = "check" + String(num);
   var o_name = "output" + String(num);
   var c_state = $("[id=" + c_name + "]").prop("checked");
   var delay_time = $("[id=" + o_name + "]").val()*1000;
 
-  //audio_list[Number(pre_play_num)].pause();
-  audio_list[Number(pre_play_num)].currentTime = 0;
-  audio_count[Number(pre_play_num)] = 10000;
+  audio_list[pre_play_num].pause();
+  audio_list[pre_play_num].currentTime = 0;
+  audio_count[pre_play_num] = 10000;
 
   //音のループ処理関係
   var select_sound_loop_num = $("#sound_loop_num").val();
@@ -217,6 +217,7 @@ function playSound(_num_str){
   console.log("delay_time = " + delay_time);
 
   pre_play_num = num;
+  console.log("pre_play_num = " + pre_play_num);
 
 }
 

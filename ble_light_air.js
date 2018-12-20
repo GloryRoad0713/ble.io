@@ -17,7 +17,7 @@ for(var i=0; i < audio_list.length; i++){
     audio_list[i].preload ="auto";
     audio_duration[i] = audio_list[i].duration * 1000;
     audio_count[i] = 0;
-    console.log(audio_duration[i];
+    console.log(audio_duration[i]);
     //console.log(sound_links[i].link);
 }
 

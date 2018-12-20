@@ -1,5 +1,4 @@
-
-var sound_links = [{link:"https://dl.dropboxusercontent.com/s/i8gsheqfsopckxj/09_sound.mp3", name:"01"},
+var sound_links = [{link:"https://dl.dropboxusercontent.com/s/62b9cmkxx109nev/01_sound.mp3", name:"01"},
                    {link:"https://dl.dropboxusercontent.com/s/s3fgpg3niutrljd/02_sound.mp3", name:"02"},
                    {link:"https://dl.dropboxusercontent.com/s/j3quvvsrnqes32m/03_sound.mp3", name:"03"},
                    {link:"https://dl.dropboxusercontent.com/s/yxrfy5kegcdug80/04_sound.mp3", name:"04"},
@@ -10,11 +9,12 @@ var sound_links = [{link:"https://dl.dropboxusercontent.com/s/i8gsheqfsopckxj/09
 
 
 audio_list = new Array(8);
+audio_duration = new Array(8);
 for(var i=0; i < audio_list.length; i++){
     audio_list[i] = new Audio();
     audio_list[i].src = sound_links[i].link;
     audio_list[i].preload ="auto";
-
+    audio_duration[i] = audio_list[i].duration;
     //console.log(sound_links[i].link);
 }
 
@@ -161,14 +161,6 @@ function sendInterruptLight(_num_str) {
   //console.log(_num_str);
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
 
-/*
-  console.log(_num_str)
-  if (typeof _num_str === "undefined"){
-    console.log("_num_strは未定義")
-    return;
-  }
-*/
-
   //光のループ処理関係
   var select_light_loop_num = $("#light_loop_num").val();
   /*
@@ -196,8 +188,9 @@ function sendInterruptLight(_num_str) {
 
 //音の処理
 function playSound(_num_str){
-  var c_name = "check" + _num_str;
-  var o_name = "output" + _num_str;
+  var num = Number(_num_str) - 1;
+  var c_name = "check" + String(num);
+  var o_name = "output" + String(num);
   var c_state = $("[id=" + c_name + "]").prop("checked");
   var delay_time = $("[id=" + o_name + "]").val()*1000;
 
@@ -205,27 +198,25 @@ function playSound(_num_str){
 
   //音のループ処理関係
   var select_sound_loop_num = $("#sound_loop_num").val();
-  if(select_sound_loop_num != 0){
-    //characteristic.writeValue(new TextEncoder().encode("l" + String(select_sound_loop_num)));
-    //console.log("send sound " + String(select_sound_loop_num) + " times loop signal")
+  if(select_sound_loop_num != "n"){
+    audio_list[Number(num)].loop = true;
   }
   else{
-    //characteristic.writeValue(new TextEncoder().encode("ln"));
-    //console.log("send sound loop signal")
+    audio_list[Number(num)].loop = false;
   }
 
   console.log("c_state = " + c_state);
 
   if(c_state == true){
     setTimeout(function(){
-      audio_list[Number(_num_str)].pause();
-      audio_list[Number(_num_str)].currentTime = 0;
-      audio_list[Number(_num_str)].play();
+      audio_list[Number(num)].pause();
+      audio_list[Number(num)].currentTime = 0;
+      audio_list[Number(num)].play();
     },delay_time);
   }
   console.log("delay_time = " + delay_time);
 
-  pre_play_num = _num_str;
+  pre_play_num = num;
 
 }
 

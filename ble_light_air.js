@@ -95,25 +95,25 @@ $(function(){
 
   $("#send0").click(function(event){
     var val = $(this).val()
-    console.log("InterruptLight value = " + val);
+    //console.log("InterruptLight value = " + val);
     sendInterruptLight(val);
   });
 
   $("#send1").click(function(event){
     var val = $(this).val()
-    console.log("InterruptLight value = " + val);
+    //console.log("InterruptLight value = " + val);
     sendInterruptLight(val);
   });
 
   $("#send2").click(function(event){
     var val = $(this).val()
-    console.log("InterruptLight value = " + val);
+    //console.log("InterruptLight value = " + val);
     sendInterruptLight(val);
   });
 
   $("#send3").click(function(event){
     var val = $(this).val()
-    console.log("InterruptLight value = " + val);
+    //console.log("InterruptLight value = " + val);
     sendInterruptLight(val);
   });
 
@@ -202,7 +202,7 @@ function playSound(_num_str){
   var c_state = $("[id=" + c_name + "]").prop("checked");
   var delay_time = $("[id=" + o_name + "]").val()*1000;
 
-  audio_list[Number(pre_play_num)].pause();
+  //audio_list[Number(pre_play_num)].pause();
   audio_list[Number(pre_play_num)].currentTime = 0;
   audio_count[Number(pre_play_num)] = 10000;
 
@@ -230,7 +230,7 @@ function playSoundLoop(_num, _count){
     if(audio_count == 0){
       audio_list[_num].play();
     }
-    
+
     console.log(audio_count[_num] + ", _count = " + _count);
 
     audio_count[_num]++;

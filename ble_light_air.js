@@ -200,28 +200,15 @@ function playSound(_num_str){
 
   audio_list[Number(pre_play_num)].pause();
   audio_list[Number(pre_play_num)].currentTime = 0;
-  audio_count[_num] = 100;
+  audio_count[_num] = 10000;
 
   //音のループ処理関係
   var select_sound_loop_num = $("#sound_loop_num").val();
 
-    //audio_list[Number(num)].loop = true;
-  }
-  else{
-    //audio_list[Number(num)].loop = false;
-  }
-
-  console.log("c_state = " + c_state);
-
   if(c_state == true){
-    if(select_sound_loop_num == "n"){
-      setTimeout(function(){
-
-      },delay_time);
-    }
-    else{
+    setTimeout(function(){
       playSoundLoop(num, select_sound_loop_num);
-    }
+    },delay_time);
   }
   console.log("delay_time = " + delay_time);
 

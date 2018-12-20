@@ -226,7 +226,7 @@ function playSoundLoop(_num, _count){
   audio_list[_num].pause();
   audio_count[_num] = 0;
 
-  setInterval(function(){
+  var timerId = setInterval(function(){
     audio_list[_num].currentTime = 0;
 
     if(audio_count[_num] == 0){
@@ -236,7 +236,7 @@ function playSoundLoop(_num, _count){
     console.log(audio_count[_num] + ", _count = " + _count);
 
     audio_count[_num]++;
-    if (audio_count[_num] > _count) clearInterval(this);
+    if (audio_count[_num] > _count) clearInterval(timerId);
   },audio_list[_num].duration * 1000 - 550)
   //}duration
 }

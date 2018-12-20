@@ -9,18 +9,18 @@ var sound_links = [{link:"https://dl.dropboxusercontent.com/s/62b9cmkxx109nev/01
 
 
 audio_list = new Array(8);
-audio_duration = new Array(8);
+//audio_duration = new Array(8);
 audio_count = new Array(8);
 for(var i=0; i < audio_list.length; i++){
     audio_list[i] = new Audio();
     audio_list[i].src = sound_links[i].link;
     audio_list[i].preload ="auto";
     audio_count[i] = 0;
-    audio_list[i].addEventListener("loadedmetadata", function() {
+    /*audio_list[i].addEventListener("loadedmetadata", function(e) {
       audio_duration[i] = audio_list[i].duration * 1000;
-      console.log(audio_duration[i]);
+      console.log(audio_list[i].duration);
     }, false);
-
+*/
     //console.log(sound_links[i].link);
 }
 
@@ -204,7 +204,7 @@ function playSound(_num_str){
 
   audio_list[Number(pre_play_num)].pause();
   audio_list[Number(pre_play_num)].currentTime = 0;
-  audio_count[num] = 10000;
+  audio_count[Number(pre_play_num)] = 10000;
 
   //音のループ処理関係
   var select_sound_loop_num = $("#sound_loop_num").val();
@@ -223,18 +223,19 @@ function playSound(_num_str){
 function playSoundLoop(_num, _count){
   audio_list[_num].pause();
   audio_count[_num] = 0;
-  console.log(audio_duration[_num] - 5);
+
   setInterval(function(){
     audio_list[_num].currentTime = 0;
 
     if(audio_count == 0){
       audio_list[_num].play();
     }
-    console.log(audio_count[_num]);
+    
+    console.log(audio_count[_num] + ", _count = " + _count);
 
     audio_count[_num]++;
     if (audio_count[_num] > _count) clearInterval(this);
-  },5000)
+  },audio_list[i].duration * 1000 - 5)
   //}
 }
 

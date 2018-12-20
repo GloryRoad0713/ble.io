@@ -237,7 +237,7 @@ function playSoundLoop(_num, _count){
 
     audio_count[_num]++;
     if (audio_count[_num] > _count) clearInterval(this);
-  },audio_list[_num].duration * 1000 - 150)
+  },audio_list[_num].duration * 1000 - 550)
   //}duration
 }
 

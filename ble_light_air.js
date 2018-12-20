@@ -202,11 +202,11 @@ function playSound(_num_str){
   var c_state = $("[id=" + c_name + "]").prop("checked");
   var delay_time = $("[id=" + o_name + "]").val()*1000;
 
-  if(0 <= pre_play_num){}
+  if(0 <= pre_play_num){
     audio_list[pre_play_num].pause();
     audio_list[pre_play_num].currentTime = 0;
     audio_count[pre_play_num] = 10000;
-  } 
+  }
   //音のループ処理関係
   var select_sound_loop_num = $("#sound_loop_num").val();
 

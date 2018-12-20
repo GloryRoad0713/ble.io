@@ -236,8 +236,8 @@ function playSoundLoop(_num, _count){
     console.log(audio_count[_num] + ", _count = " + _count);
 
     audio_count[_num]++;
-    if (audio_count[_num] < _count) clearInterval(this);
-  },audio_list[_num].duration * 1000 - 75)
+    if (audio_count[_num] > _count) clearInterval(this);
+  },audio_list[_num].duration * 1000 - 150)
   //}duration
 }
 

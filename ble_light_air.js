@@ -40,6 +40,7 @@ var light_loop_state = false;
 var sound_loop_state = false;
 var pre_play_num = "0";
 
+var timerId;
 
 $(function(){
   $("#check_ble_connect").click(function(){
@@ -213,6 +214,7 @@ function playSound(_num_str){
     audio_list[pre_play_num].pause();
     audio_list[pre_play_num].currentTime = 0;
     audio_count[pre_play_num] = 10000;
+    clearInterval(timerId);
   }
   //音のループ処理関係
   var select_sound_loop_num = $("#sound_loop_num").val();
@@ -233,7 +235,7 @@ function playSoundLoop(_num, _count){
   audio_list[_num].pause();
   audio_count[_num] = 1;
 
-  var timerId = setInterval(function(){
+  timerId = setInterval(function(){
     audio_list[_num].play();
     audio_list[_num].currentTime = 0;
     console.log(audio_count[_num] + ", _count = " + _count);

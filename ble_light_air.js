@@ -225,7 +225,7 @@ function playSound(_num_str){
 
   if(c_state == true){
     setTimeout(function(){
-      audio_list[num].load();
+      //audio_list[num].load();
       //print("duration = " + audio_list[num].duration);
       playSoundLoop(num, select_sound_loop_num, duration);
 
@@ -242,14 +242,20 @@ function playSoundLoop(_num, _count, _duration){
   audio_list[_num].pause();
   audio_count[_num] = 1;
 
+  audio_list[_num].play();
+  audio_list[_num].currentTime = 0;
+  console.log(audio_count[_num] + ", _count = " + _count);
+
+  audio_count[_num]++;
+
   timerId = setInterval(function(){
+    if (audio_count[_num] > _count) clearInterval(timerId);
 
     audio_list[_num].play();
     audio_list[_num].currentTime = 0;
     console.log(audio_count[_num] + ", _count = " + _count);
-
     audio_count[_num]++;
-    if (audio_count[_num] > _count) clearInterval(timerId);
+
   },_duration - 200)
   //}duration
 }

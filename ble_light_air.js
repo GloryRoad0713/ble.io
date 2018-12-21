@@ -210,6 +210,7 @@ function playSound(_num_str){
   var o_name = "output" + String(num);
   var c_state = $("[id=" + c_name + "]").prop("checked");
   var delay_time = $("[id=" + o_name + "]").val()*1000;
+  var duration = audio_list[num].duration * 1000;
 
   if(0 <= pre_play_num){
     audio_list[pre_play_num].pause();
@@ -224,10 +225,10 @@ function playSound(_num_str){
 
   if(c_state == true){
     setTimeout(function(){
-
-      //print("duration = " + audio_list[num].duration);
-      playSoundLoop(num, select_sound_loop_num, audio_list[num].duration * 1000);
       audio_list[num].load();
+      //print("duration = " + audio_list[num].duration);
+      playSoundLoop(num, select_sound_loop_num, duration);
+
     },delay_time);
   }
   console.log("delay_time = " + delay_time);

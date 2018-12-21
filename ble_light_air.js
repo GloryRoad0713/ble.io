@@ -249,7 +249,10 @@ function playSoundLoop(_num, _count, _duration){
   audio_count[_num]++;
 
   timerId = setInterval(function(){
-    if (audio_count[_num] > _count) clearInterval(timerId);
+    if (audio_count[_num] > _count){
+      clearInterval(timerId);
+      return;
+    }
 
     audio_list[_num].play();
     audio_list[_num].currentTime = 0;

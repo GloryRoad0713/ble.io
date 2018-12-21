@@ -220,13 +220,14 @@ function playSound(_num_str){
   //音のループ処理関係
   var select_sound_loop_num = $("#sound_loop_num").val();
 
-  console.log("duration = " + String(audio_list[num].duration * 1000));
+  //console.log("duration = " + String(audio_list[num].duration * 1000));
 
   if(c_state == true){
     setTimeout(function(){
-      //audio_list[num].load();
+
       //print("duration = " + audio_list[num].duration);
-      playSoundLoop(num, select_sound_loop_num);
+      playSoundLoop(num, select_sound_loop_num, audio_list[num].duration * 1000);
+      audio_list[num].load();
     },delay_time);
   }
   console.log("delay_time = " + delay_time);
@@ -236,7 +237,7 @@ function playSound(_num_str){
 
 }
 
-function playSoundLoop(_num, _count){
+function playSoundLoop(_num, _count, _duration){
   audio_list[_num].pause();
   audio_count[_num] = 1;
 
@@ -248,7 +249,7 @@ function playSoundLoop(_num, _count){
 
     audio_count[_num]++;
     if (audio_count[_num] > _count) clearInterval(timerId);
-  },audio_list[_num].duration * 1000 - 200)
+  },_duration - 200)
   //}duration
 }
 

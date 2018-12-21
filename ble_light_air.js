@@ -162,6 +162,7 @@ function connect() {
 
     setTimeout(changelightPosition,200);
     setTimeout(changeBageLight,200);
+    setTimeout(changeBlendValue,200);
     setTimeout(changeBlightValue,200, Null);
   })
   .catch(error => {

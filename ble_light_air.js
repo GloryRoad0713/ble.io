@@ -161,9 +161,9 @@ function connect() {
     characteristic = chara;
 
     setTimeout(changelightPosition, 200);
-    setTimeout(changeBageLight, 200);
-    setTimeout(changeBlendValue, 200, "change");
-    setTimeout(changeBlightValue, 200, "change");
+    setTimeout(changeBageLight, 400);
+    setTimeout(changeBlendValue, 600, "change");
+    setTimeout(changeBlightValue, 800, "change");
   })
   .catch(error => {
     console.log(error);

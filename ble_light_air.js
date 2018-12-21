@@ -222,7 +222,7 @@ function playSound(_num_str){
 
   if(c_state == true){
     setTimeout(function(){
-      audio_list[_num].load();
+      audio_list[num].load();
       print("duration = " + audio_list[num].duration);
       playSoundLoop(num, select_sound_loop_num);
     },delay_time);

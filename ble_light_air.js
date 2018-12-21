@@ -159,10 +159,16 @@ function connect() {
     console.log("characteristic", chara)
     alert("BLE接続が完了しました。");
     characteristic = chara;
+
+    setTimeout(changelightPosition,200);
+    setTimeout(changeBageLight,200);
+    setTimeout(changeBlightValue,200, Null);
   })
   .catch(error => {
     console.log(error);
   });
+
+
 }
 //ESP32に値を送信
 function sendInterruptLight(_num_str) {
@@ -233,7 +239,7 @@ function playSoundLoop(_num, _count){
 
     audio_count[_num]++;
     if (audio_count[_num] > _count) clearInterval(timerId);
-  },audio_list[_num].duration * 1000 - 0)
+  },audio_list[_num].duration * 1000 - 200)
   //}duration
 }
 

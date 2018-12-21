@@ -69,27 +69,27 @@ $(function(){
   });
 
   $("#blend").on( 'input', function (event) {
-    changeBlendValue(event);
+    changeBlendValue(event.type);
   });
 
   $("#blend").on( 'change', function (event) {
-    changeBlendValue(event);
+    changeBlendValue(event.type);
   });
 
   $("#bright_up").on( 'input', function (event) {
-    changeBlightValue(event);
+    changeBlightValue(event.type);
   });
 
   $("#bright_up").on( 'change', function (event) {
-    changeBlightValue(event);
+    changeBlightValue(event.type);
   });
 
   $("#bright_down").on( 'input', function (event) {
-    changeBlightValue(event);
+    changeBlightValue(event.type);
   });
 
   $("#bright_down").on( 'change', function (event) {
-    changeBlightValue(event);
+    changeBlightValue(event.type);
   });
 
 
@@ -160,10 +160,10 @@ function connect() {
     alert("BLE接続が完了しました。");
     characteristic = chara;
 
-    setTimeout(changelightPosition,200);
-    setTimeout(changeBageLight,200);
-    setTimeout(changeBlendValue,200);
-    setTimeout(changeBlightValue,200, Null);
+    setTimeout(changelightPosition, 200);
+    setTimeout(changeBageLight, 200);
+    setTimeout(changeBlendValue, 200, "change");
+    setTimeout(changeBlightValue, 200, "change");
   })
   .catch(error => {
     console.log(error);
@@ -269,10 +269,10 @@ function changeBageLight(){
   console.log("selected_base = " + selected_base);
 }
 
-function changeBlendValue(_event){
+function changeBlendValue(_type){
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   var blend_value = "b" + $("#blend").val();
-  if(_event.type == "input"){
+  if(_type == "input"){
     console.log("【input】blend value = " + blend_value);
     characteristic.writeValue(new TextEncoder().encode(blend_value));
   }
@@ -285,11 +285,11 @@ function changeBlendValue(_event){
 }
 
 
-function changeBlightValue(_event){
-  console.log(_event.type);
+function changeBlightValue(_type){
+  console.log(_type);
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   var bright_value = "br" + $("#bright_up").val() + "," + $("#bright_down").val();
-  if(_event.type == "input"){
+  if(_type == "input"){
     console.log("【input】bright value = " + bright_value);
     characteristic.writeValue(new TextEncoder().encode(bright_value));
   }

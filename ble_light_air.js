@@ -222,7 +222,7 @@ function playSound(_num_str){
 
   if(c_state == true){
     setTimeout(function(){
-      audio_list[num].load();
+
       playSoundLoop(num, select_sound_loop_num);
     },delay_time);
   }
@@ -238,6 +238,7 @@ function playSoundLoop(_num, _count){
   audio_count[_num] = 1;
 
   timerId = setInterval(function(){
+    audio_list[_num].load();
     audio_list[_num].play();
     audio_list[_num].currentTime = 0;
     console.log(audio_count[_num] + ", _count = " + _count);

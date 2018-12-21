@@ -220,6 +220,8 @@ function playSound(_num_str){
   //音のループ処理関係
   var select_sound_loop_num = $("#sound_loop_num").val();
 
+  print("duration = " + String(audio_list[num].duration * 1000));
+
   if(c_state == true){
     setTimeout(function(){
       //audio_list[num].load();

@@ -16,6 +16,7 @@ for(var i=0; i < audio_list.length; i++){
     audio_list[i].src = sound_links[i].link;
     audio_list[i].preload ="auto";
     audio_count[i] = 0;
+    //audio_list[i].load();
     /*audio_list[i].addEventListener("loadedmetadata", function(e) {
       audio_duration[i] = audio_list[i].duration * 1000;
       console.log(audio_list[i].duration);
@@ -221,6 +222,7 @@ function playSound(_num_str){
 
   if(c_state == true){
     setTimeout(function(){
+      audio_list[num].load();
       playSoundLoop(num, select_sound_loop_num);
     },delay_time);
   }

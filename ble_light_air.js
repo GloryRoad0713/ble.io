@@ -255,7 +255,7 @@ function playSoundLoop(_num, _count, _duration){
       return;
     }
 
-    audio_list[_num].currentTime = 20;
+    audio_list[_num].currentTime = 100;
     audio_list[_num].play();
 
     console.log(audio_count[_num] + ", _count = " + _count);

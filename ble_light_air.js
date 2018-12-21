@@ -242,8 +242,9 @@ function playSoundLoop(_num, _count, _duration){
   audio_list[_num].pause();
   audio_count[_num] = 1;
 
-  audio_list[_num].play();
   audio_list[_num].currentTime = 0;
+  audio_list[_num].play();
+
   console.log(audio_count[_num] + ", _count = " + _count);
 
   audio_count[_num]++;
@@ -254,8 +255,9 @@ function playSoundLoop(_num, _count, _duration){
       return;
     }
 
-    audio_list[_num].play();
     audio_list[_num].currentTime = 20;
+    audio_list[_num].play();
+
     console.log(audio_count[_num] + ", _count = " + _count);
     audio_count[_num]++;
 

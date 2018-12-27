@@ -31,6 +31,7 @@ var light_loop_state = false;
 var sound_loop_state = false;
 var pre_play_num = "0";
 
+var timerId;
 
 $(function(){
   $("#check_ble_connect").click(function(){
@@ -38,37 +39,68 @@ $(function(){
         connect();
     } else {
         disconnect();
-    }    
-  });
-  
-  
-  $("#check_light_loop").click(function(){
-    if (this.checked) {
-        light_loop_state = true;
-        console.log("light_loop_state is true");
-    } else {
-        light_loop_state = false;
-       console.log("light_loop_state is false");
     }
   });
-  
-  $("#check_sound_loop").click(function(){
-    if (this.checked) {
-        sound_loop_state = true;
-        console.log("sound_loop_state is true");
-    } else {
-        sound_loop_state = false;
-        console.log("sound_loop_state is false");
-    }
+
+  //光の位置の変更関係
+  $('#p01_text').change(function() {
+    changelightPosition();
   });
-  
-  /*
-  $("#send").click(function(event){
-    sendMessage(event.target.value);
-    console.log("pressed button");
+  $('#p02_text').change(function() {
+    changelightPosition();
   });
-  */
+  $('#p03_text').change(function() {
+    changelightPosition();
+  });
+  $('#p04_text').change(function() {
+    changelightPosition();
+  });
+
+  $("#send0").click(function(event){
+    var val = $(this).val()
+    sendInterruptLight(val);
+  });
+
+  $("#send1").click(function(event){
+    var val = $(this).val()
+    sendInterruptLight(val);
+  });
+
+  $("#send2").click(function(event){
+    var val = $(this).val()
+    sendInterruptLight(val);
+  });
+
+  $("#send3").click(function(event){
+    var val = $(this).val()
+    sendInterruptLight(val);
+  });
+  $("#send4").click(function(event){
+    var val = $(this).val()
+    sendInterruptLight(val);
+  });
+
+  $("#send5").click(function(event){
+    var val = $(this).val()
+    sendInterruptLight(val);
+  });
+
+  $("#send6").click(function(event){
+    var val = $(this).val()
+    sendInterruptLight(val);
+  });
+
+  $("#send7").click(function(event){
+    var val = $(this).val()
+    sendInterruptLight(val);
+  });
+
+  $("#send8").click(function(event){
+    var val = $(this).val()
+    sendInterruptLight(val);
+  });
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -119,64 +151,85 @@ function connect() {
 function sendMessage(_num_str) {
   //console.log(_num_str);
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
-  //light_loop_state = $("check_light_loop").prop("checked");
-  //sound_loop_state = $("check_sound_loop").prop("checked");
-  
-  console.log(_num_str)
-  if (typeof _num_str === "undefined"){
-    console.log("_num_strは未定義")
-    return;
-  }
-    
-  if(light_loop_state == true){
-    characteristic.writeValue(new TextEncoder().encode("l1"));
-    console.log("send light loop signal")
-  }
-  else{
-    characteristic.writeValue(new TextEncoder().encode("l0"));
-    console.log("send light not-loop signal")
-  }
 
-  var text = _num_str;
+  //光のループ処理関係
+  var select_light_loop_num = $("#light_loop_num").val();
+
+  var text = _num_str + "," + select_light_loop_num;
   var arrayBuffe = new TextEncoder().encode(text);
 
   setTimeout(function(){
     characteristic.writeValue(arrayBuffe);
+    console.log("send InterruptLight signal = " + text)
   },200);
 
   playSound(_num_str);
 }
 
 
+//音の処理
 function playSound(_num_str){
-  var c_name = "check" + _num_str;
-  var o_name = "output" + _num_str;
+  var num = Number(_num_str) - 11;
+  var c_name = "check" + String(num);
+  var o_name = "output" + String(num);
   var c_state = $("[id=" + c_name + "]").prop("checked");
   var delay_time = $("[id=" + o_name + "]").val()*1000;
+  //var duration = audio_list[num].duration * 1000;
 
-  audio_list[Number(pre_play_num)].pause();
+  if(0 <= pre_play_num){
+    audio_list[pre_play_num].pause();
+    audio_list[pre_play_num].currentTime = 0;
+    audio_count[pre_play_num] = 10000;
+    clearInterval(timerId);
+  }
+  //音のループ処理関係
+  var select_sound_loop_num = $("#sound_loop_num").val();
 
-  if(sound_loop_state == true){
-    audio_list[Number(_num_str)].loop = true;
-  }
-  else{
-    audio_list[Number(_num_str)].loop = false;
-  }
-  
-  console.log("c_state = " + c_state);
-  
+  //console.log("duration = " + String(audio_list[num].duration * 1000));
+
   if(c_state == true){
     setTimeout(function(){
-      audio_list[Number(_num_str)].pause();
-      audio_list[Number(_num_str)].currentTime = 0;
-      audio_list[Number(_num_str)].play();
+      //audio_list[num].load();
+      //print("duration = " + audio_list[num].duration);
+      playSoundLoop(num, select_sound_loop_num, audio_list[num].duration * 1000);
+
     },delay_time);
   }
   console.log("delay_time = " + delay_time);
 
-  pre_play_num = _num_str;
+  pre_play_num = num;
+  console.log("pre_play_num = " + pre_play_num);
 
 }
+
+function playSoundLoop(_num, _count, _duration){
+  audio_list[_num].pause();
+  audio_count[_num] = 1;
+
+  audio_list[_num].currentTime = 0;
+  audio_list[_num].play();
+
+  console.log(audio_count[_num] + ", _count = " + _count);
+
+  audio_count[_num]++;
+
+  timerId = setInterval(function(){
+    if (audio_count[_num] > _count){
+      clearInterval(timerId);
+      return;
+    }
+
+    audio_list[_num].currentTime = 0;
+    audio_list[_num].play();
+
+    console.log(audio_count[_num] + ", _count = " + _count);
+    audio_count[_num]++;
+
+  },_duration - 200)
+  //}duration
+}
+
+
 //BEL切断処理
 function disconnect() {
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected) return ;

@@ -9,12 +9,13 @@ var sound_links = [{link:"https://dl.dropboxusercontent.com/s/i8gsheqfsopckxj/09
 
 
 audio_list = new Array(8);
-for(var i=0; i < audio_list.length; i++){
-    audio_list[i] = new Audio();
-    audio_list[i].src = sound_links[i].link;
-    audio_list[i].preload ="auto";
 
-    //console.log(sound_links[i].link);
+audio_count = new Array(8);
+for(var i=0; i < audio_list.length; i++){
+   audio_list[i] = new Audio();
+   audio_list[i].src = sound_links[i].link;
+   audio_list[i].preload ="auto";
+   audio_count[i] = 0;
 }
 
 var bluetoothDevice;

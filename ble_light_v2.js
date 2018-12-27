@@ -58,46 +58,46 @@ $(function(){
 
   $("#send0").click(function(event){
     var val = $(this).val()
-    sendInterruptLight(val);
+    sendMessage(val);
   });
 
   $("#send1").click(function(event){
     var val = $(this).val()
-    sendInterruptLight(val);
+    sendMessage(val);
   });
 
   $("#send2").click(function(event){
     var val = $(this).val()
-    sendInterruptLight(val);
+    sendMessage(val);
   });
 
   $("#send3").click(function(event){
     var val = $(this).val()
-    sendInterruptLight(val);
+    sendMessage(val);
   });
   $("#send4").click(function(event){
     var val = $(this).val()
-    sendInterruptLight(val);
+    sendMessage(val);
   });
 
   $("#send5").click(function(event){
     var val = $(this).val()
-    sendInterruptLight(val);
+    sendMessage(val);
   });
 
   $("#send6").click(function(event){
     var val = $(this).val()
-    sendInterruptLight(val);
+    sendMessage(val);
   });
 
   $("#send7").click(function(event){
     var val = $(this).val()
-    sendInterruptLight(val);
+    sendMessage(val);
   });
 
   $("#send8").click(function(event){
     var val = $(this).val()
-    sendInterruptLight(val);
+    sendMessage(val);
   });
 });
 

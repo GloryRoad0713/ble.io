@@ -1,180 +1,324 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ble-control</title>
-    <link rel="stylesheet" type="text/css" href="style_air.css">
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://unpkg.com/ionicons@4.4.8/dist/ionicons.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>-
-    <script type="text/javascript" src="ble_light_air.js"></script>
-  </head>
-  <body>
-
-    <div class="container">
-      <div class="title margin">
-          <p id="title">光と音のコントロール</p>
-          <p id="subtitle">esp32との連携用(AC版)</p>
-      </div>
-
-      <br>
-
-        <p class = "Catergory_text"><ion-icon name="bluetooth" class = "menu_icon"></ion-icon>Bluetooth接続</p>
-        <div class="switch">
-        <label class="switch__label" padding = "30px">
-          <input type="checkbox" class="switch__input"/ id = "check_ble_connect">
-          <span class="switch__content"></span>
-          <span class="switch__circle"></span>
-        </label>
-      </div>
-
-      <hr>
-
-      <p class = "Catergory_text"><ion-icon name="infinite" class = "menu_icon"></ion-icon>割り込む光のループ再生回数</p>
-      <div class="custom">
-        <select name="options" id = "light_loop_num">
-          <option value="1">ループしない</option>
-          <option value="2">1回</option>
-          <option value="3">2回</option>
-          <option value="4">3回</option>
-          <option value="5">4回</option>
-          <option value="n">常にループ</option>
-        </select>
-      </div>
-
-      <hr>
-
-      <p class = "Catergory_text"><ion-icon name="infinite" class = "menu_icon"></ion-icon>割り込む音のループ再生</p>
-      <div class="custom">
-        <select name="options"  id = "sound_loop_num">
-          <option value="1">ループしない</option>
-          <option value="2">1回</option>
-          <option value="3">2回</option>
-          <option value="4">3回</option>
-          <option value="5">4回</option>
-          <option value="10000">常にループ</option>
-        </select>
-      </div>
-
-      <hr>
-      <p class = "Catergory_text"><ion-icon name="locate" class = "menu_icon"></ion-icon>LEDの位置</p>
-      <div class="cp_iptxt">
-        <label class="ef"><span>LED01</span>
-        <input type="number"  value="1" id  = "p01_text" pattern="([1-9][0-9]*)">
-        </label>
-        <label class="ef"><span>LED02</span>
-        <input type="number"  value="12" id  = "p02_text" pattern="([1-9][0-9]*)">
-        </label>
-        <label class="ef"><span>LED03</span>
-        <input type="number"  value="23" id  = "p03_text" pattern="([1-9][0-9]*)">
-        </label>
-        <label class="ef"><span>セット数</span>
-        <input type="number"  value="2" id  = "p04_text" pattern="([1-9][0-9]*)">
-        </label>
-      </div>
-
-      <hr>
-
-      <p class = "Catergory_text"><ion-icon name="power" class = "menu_icon"></ion-icon>ベースの光：
-        <output id = "base_light_name">名前1</output></p>
-      <ul class="radios" id = "base_light">
-          <li>
-              <input type="radio" name="radio1" value="1" id="名前1"  oninput="document.getElementById('base_light_name').value=this.id" checked="checked"/>
-              <label for="radio1">1</label>
-          </li>
-          <li>
-              <input type="radio" name="radio1" value="2" id="名前2"  oninput="document.getElementById('base_light_name').value=this.id"/>
-              <label for="radio2">2</label>
-          </li>
-          <li>
-              <input type="radio" name="radio1" value="3" id="名前3" oninput="document.getElementById('base_light_name').value=this.id"/>
-              <label for="radio3">3</label>
-          </li>
-          <li>
-              <input type="radio" name="radio1" value="4" id="名前4" oninput="document.getElementById('base_light_name').value=this.id"/>
-              <label for="radio4">4</label>
-          </li>
-          <li>
-              <input type="radio" name="radio1" value="5" id="名前5" oninput="document.getElementById('base_light_name').value=this.id"/>
-              <label for="radio4">5</label>
-          </li>
-          <li>
-              <input type="radio" name="radio1" value="6" id="名前6" oninput="document.getElementById('base_light_name').value=this.id"/>
-              <label for="radio4">6</label>
-          </li>
-          <li>
-              <input type="radio" name="radio1" value="7" id="名前7" oninput="document.getElementById('base_light_name').value=this.id"/>
-              <label for="radio4">7</label>
-          </li>
-          <li>
-              <input type="radio" name="radio1" value="8" id="名前8" oninput="document.getElementById('base_light_name').value=this.id"/>
-              <label for="radio4">8</label>
-          </li>
-          <li>
-              <input type="radio" name="radio1" value="0" id="OFF" oninput="document.getElementById('base_light_name').value=this.id"/>
-              <label for="radio5">なし</label>
-          </li>
-      </ul>
-
-      <hr>
-      <p class = "Catergory_text"><ion-icon name="flask" class = "menu_icon"></ion-icon>ブレンドの割合 : <output id="output_blend">50</output><span>%</span></p>
-      <div class="base_setting_bar">
-          <input id = "blend" type="range" class="base-input-range" value="50" min="0" max="100"  step="1" data-unit="%"
-              oninput="document.getElementById('output_blend').value=this.value">
-      </div>
-      <hr>
-
-      <p class = "Catergory_text"><ion-icon name="flashlight" class = "menu_icon"></ion-icon></ion-icon>明るさ　上部：<output id="output_up">100</output><span>%</span>　下部：<output id="output_down">100</output><span>%</span></p>
-      <div class="base_setting_bar">
-          <input id = "bright_up" type="range" class="base-input-range" value="100" min="0" max="100"  step="1" data-unit="%"
-              oninput="document.getElementById('output_up').value=this.value">
-      </div>
-      <div class="base_setting_bar">
-          <input id = "bright_down" type="range" class="base-input-range" value="100" min="0" max="100"  step="1" data-unit="%"
-              oninput="document.getElementById('output_down').value=this.value">
-      </div>
-      <hr>
+var sound_links = [{link:"https://dl.dropboxusercontent.com/s/62b9cmkxx109nev/01_sound.mp3", name:"01"},
+                   {link:"https://dl.dropboxusercontent.com/s/s3fgpg3niutrljd/02_sound.mp3", name:"02"},
+                   {link:"https://dl.dropboxusercontent.com/s/j3quvvsrnqes32m/03_sound.mp3", name:"03"},
+                   {link:"https://dl.dropboxusercontent.com/s/yxrfy5kegcdug80/04_sound.mp3", name:"04"},
+                   {link:"https://dl.dropboxusercontent.com/s/e74cx8wjnbbsyb5/05_sound.mp3", name:"05"},
+                   {link:"https://dl.dropboxusercontent.com/s/0em3gqmewk91acx/06_sound.mp3", name:"06"},
+                   {link:"https://dl.dropboxusercontent.com/s/xjv58j2r600dlqr/07_sound.mp3", name:"07"},
+                   {link:"https://dl.dropboxusercontent.com/s/fi70pfrtqagbcf6/08_sound.mp3", name:"08"}];
 
 
-      <br>
-      <br>
-      <br>
+audio_list = new Array(8);
+//audio_duration = new Array(8);
+audio_count = new Array(8);
+for(var i=0; i < audio_list.length; i++){
+    audio_list[i] = new Audio();
+    audio_list[i].src = sound_links[i].link;
+    audio_list[i].preload ="auto";
+    audio_count[i] = 0;
+    //audio_list[i].load();
+    /*audio_list[i].addEventListener("loadedmetadata", function(e) {
+      audio_duration[i] = audio_list[i].duration * 1000;
+      console.log(audio_list[i].duration);
+    }, false);
+*/
+    //console.log(sound_links[i].link);
+}
 
-      <div class = "button_container">
-        <button id="send0" value="0" class="btn-animation-02"><span>光と音の停止</span></a></button>
-      </div>
+//var audio_count = 0;
 
-      <div class = "button_container">
-        <button id="send1" value="11" class="btn-animation-02"><span>行き来する光</span></a></button>
-        <div class="cp_ipcheck">
-              <input type="checkbox" id = "check0" class="check-animation" checked="checked">
-              <input id = "time" type="range" class="input-range" value="0.0" min="0.0" max="5.0"  step="0.1" data-unit="%"
-                  oninput="document.getElementById('output0').value=Number(this.value).toFixed(1)">
-              <output id="output0">0.0</output><span>秒後に音を再生</span>
-        </div>
-      </div>
+var bluetoothDevice;
+var characteristic;
+//chibi:bit BLE UUID
+var LED_SERVICE_UUID                        = '000000ff-0000-1000-8000-00805f9b34fb';
+var LED_TEXT_CHARACTERISTIC_UUID            = '0000ff01-0000-1000-8000-00805f9b34fb';
+//ボタンイベントリスナー
+//d3.select("#connect").on("click", connect);
+//d3.select("#disconnect").on("click", disconnect);
+//d3.select("#send").on("click", sendMessage);
+var ble_state = false;
+var light_loop_state = false;
+var sound_loop_state = false;
+var pre_play_num = "0";
 
-      <div class = "button_container">
-        <button id="send2" value="12" class="btn-animation-02"><span>全灯する光</span></a></button>
-        <div class="cp_ipcheck">
-            <input type="checkbox" id = "check1" class="check-animation" checked="checked">
-            <input id = "time" type="range" class="input-range" value="0" min="0" max="5"  step="0.1" data-unit="%"
-                oninput="document.getElementById('output1').value=Number(this.value).toFixed(1)">
-            <output id="output1">0.0</output><span>秒後に音を再生</span>
-        </div>
-      </div>
+var timerId;
 
-      <div class = "button_container">
-        <button id="send3" value="13" class="btn-animation-02"><span>呼吸する光</span></a></button>
-        <div class="cp_ipcheck">
-            <input type="checkbox" id = "check2" class="check-animation" checked="checked">
-            <input id = "time" type="range" class="input-range" value="0" min="0" max="5"  step="0.1" data-unit="%"
-                oninput="document.getElementById('output2').value=Number(this.value).toFixed(1)">
-            <output id="output2">0.0</output><span>秒後に音を再生</span>
-        </div>
-      </div>
+$(function(){
+  $("#check_ble_connect").click(function(){
+    if (this.checked) {
+        connect();
+    } else {
+        disconnect();
+    }
+  });
 
-    </div>
+  //光の位置の変更関係
+  $('#p01_text').change(function() {
+    changelightPosition();
+  });
+  $('#p02_text').change(function() {
+    changelightPosition();
+  });
+  $('#p03_text').change(function() {
+    changelightPosition();
+  });
+  $('#p04_text').change(function() {
+    changelightPosition();
+  });
+
+  $("#base_light").click(function(){
+    changeBageLight();
+  });
+
+  $("#blend").on( 'input', function (event) {
+    changeBlendValue(event.type);
+  });
+
+  $("#blend").on( 'change', function (event) {
+    changeBlendValue(event.type);
+  });
+
+  $("#bright_up").on( 'input', function (event) {
+    changeBlightValue(event.type);
+  });
+
+  $("#bright_up").on( 'change', function (event) {
+    changeBlightValue(event.type);
+  });
+
+  $("#bright_down").on( 'input', function (event) {
+    changeBlightValue(event.type);
+  });
+
+  $("#bright_down").on( 'change', function (event) {
+    changeBlightValue(event.type);
+  });
 
 
-  </body>
-</html>
+  $("#send0").click(function(event){
+    var val = $(this).val()
+    //console.log("InterruptLight value = " + val);
+    sendInterruptLight(val);
+  });
+
+  $("#send1").click(function(event){
+    var val = $(this).val()
+    //console.log("InterruptLight value = " + val);
+    sendInterruptLight(val);
+  });
+
+  $("#send2").click(function(event){
+    var val = $(this).val()
+    //console.log("InterruptLight value = " + val);
+    sendInterruptLight(val);
+  });
+
+  $("#send3").click(function(event){
+    var val = $(this).val()
+    //console.log("InterruptLight value = " + val);
+    sendInterruptLight(val);
+  });
+
+});
+
+/*
+document.addEventListener("DOMContentLoaded", function(){
+  document.body.addEventListener('click', function (event) {
+      if(event.target.id == "send"){
+        console.log("pressed button");
+        sendInterruptLight(event.target.value);
+      }
+  }, false);
+}, false);
+*/
+
+//chibi:bitに接続する
+function connect() {
+  let options = {};
+
+  //options.acceptAllDevices = true;
+
+  options.filters = [
+    {services: [LED_SERVICE_UUID]},
+    {name: "ESP_GATTS_DEMO"}
+  ];
+
+  navigator.bluetooth.requestDevice(options)
+  .then(device => {
+    bluetoothDevice = device;
+    console.log("device", device);
+    return device.gatt.connect();
+  })
+  .then(server =>{
+    console.log("server", server)
+    return server.getPrimaryService(LED_SERVICE_UUID);
+  })
+  .then(service => {
+    console.log("service", service)
+    return service.getCharacteristic(LED_TEXT_CHARACTERISTIC_UUID)
+  })
+  .then(chara => {
+    console.log("characteristic", chara)
+    alert("BLE接続が完了しました。");
+    characteristic = chara;
+
+    setTimeout(changelightPosition, 200);
+    setTimeout(changeBageLight, 400);
+    setTimeout(changeBlendValue, 600, "change");
+    setTimeout(changeBlightValue, 800, "change");
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+
+}
+//ESP32に値を送信
+function sendInterruptLight(_num_str) {
+  //console.log(_num_str);
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
+
+  //光のループ処理関係
+  var select_light_loop_num = $("#light_loop_num").val();
+  /*
+  console.log("select_light_loop_num = " + select_light_loop_num)
+  //if(select_light_loop_num != 0){
+  characteristic.writeValue(new TextEncoder().encode(select_light_loop_num));
+  console.log("send light " + String(select_light_loop_num) + " times loop signal")
+
+  }
+  else{
+    characteristic.writeValue(new TextEncoder().encode("ln"));
+    console.log("send light loop signal")
+  }
+*/
+  var text = "i" + _num_str + "," + select_light_loop_num;
+  var arrayBuffe = new TextEncoder().encode(text);
+
+  setTimeout(function(){
+    characteristic.writeValue(arrayBuffe);
+    console.log("send InterruptLight signal = " + text)
+  },200);
+
+  playSound(_num_str);
+}
+
+//音の処理
+function playSound(_num_str){
+  var num = Number(_num_str) - 11;
+  var c_name = "check" + String(num);
+  var o_name = "output" + String(num);
+  var c_state = $("[id=" + c_name + "]").prop("checked");
+  var delay_time = $("[id=" + o_name + "]").val()*1000;
+  //var duration = audio_list[num].duration * 1000;
+
+  if(0 <= pre_play_num){
+    audio_list[pre_play_num].pause();
+    audio_list[pre_play_num].currentTime = 0;
+    audio_count[pre_play_num] = 10000;
+    clearInterval(timerId);
+  }
+  //音のループ処理関係
+  var select_sound_loop_num = $("#sound_loop_num").val();
+
+  //console.log("duration = " + String(audio_list[num].duration * 1000));
+
+  if(c_state == true){
+    setTimeout(function(){
+      //audio_list[num].load();
+      //print("duration = " + audio_list[num].duration);
+      playSoundLoop(num, select_sound_loop_num, audio_list[num].duration * 1000);
+
+    },delay_time);
+  }
+  console.log("delay_time = " + delay_time);
+
+  pre_play_num = num;
+  console.log("pre_play_num = " + pre_play_num);
+
+}
+
+function playSoundLoop(_num, _count, _duration){
+  audio_list[_num].pause();
+  audio_count[_num] = 1;
+
+  audio_list[_num].currentTime = 0;
+  audio_list[_num].play();
+
+  console.log(audio_count[_num] + ", _count = " + _count);
+
+  audio_count[_num]++;
+
+  timerId = setInterval(function(){
+    if (audio_count[_num] > _count){
+      clearInterval(timerId);
+      return;
+    }
+
+    audio_list[_num].currentTime = 0;
+    audio_list[_num].play();
+
+    console.log(audio_count[_num] + ", _count = " + _count);
+    audio_count[_num]++;
+
+  },_duration - 200)
+  //}duration
+}
+
+//BEL切断処理
+function disconnect() {
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected) return ;
+  bluetoothDevice.gatt.disconnect();
+  alert("BLE接続を切断しました。")
+}
+
+//LEDの光位置の変更処理
+function changelightPosition(){
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
+
+  var position_sgiganl = "p" + $("#p01_text").val() + "," + $("#p02_text").val() + "," + $("#p03_text").val() + "," + $("#p04_text").val();
+  console.log("position_sgiganl = " + position_sgiganl);
+  characteristic.writeValue(new TextEncoder().encode(position_sgiganl));
+  //console.log("send position signal")
+}
+
+//ベースの光の変更処理
+function changeBageLight(){
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
+  var selected_base = $("input[name='radio1']:checked").val();
+  characteristic.writeValue(new TextEncoder().encode(selected_base));
+  console.log("selected_base = " + selected_base);
+
+}
+
+function changeBlendValue(_type){
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
+  var blend_value = "b" + $("#blend").val();
+  if(_type == "input"){
+    console.log("【input】blend value = " + blend_value);
+    characteristic.writeValue(new TextEncoder().encode(blend_value));
+  }
+  else{
+    setTimeout(function(){
+      console.log("【changed】blend value = " + blend_value);
+      characteristic.writeValue(new TextEncoder().encode(blend_value));
+    },200);
+  }
+}
+
+
+function changeBlightValue(_type){
+  console.log(_type);
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
+  var bright_value = "br" + $("#bright_up").val() + "," + $("#bright_down").val();
+  if(_type == "input"){
+    console.log("【input】bright value = " + bright_value);
+    characteristic.writeValue(new TextEncoder().encode(bright_value));
+  }
+  else{
+    setTimeout(function(){
+      console.log("【changed】bright value = " + bright_value);
+      characteristic.writeValue(new TextEncoder().encode(bright_value));
+    },200);
+  }
+}

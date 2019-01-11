@@ -288,6 +288,8 @@ function changeBageLight(){
   var selected_base = $("input[name='radio1']:checked").val();
   characteristic.writeValue(new TextEncoder().encode(selected_base));
   console.log("selected_base = " + selected_base);
+
+  document.getElementById("base_light_name").innerText = $("input[name='radio1']:checked").attr('name');
 }
 
 function changeBlendValue(_type){

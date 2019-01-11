@@ -284,12 +284,12 @@ function changelightPosition(){
 
 //ベースの光の変更処理
 function changeBageLight(){
-  //if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   var selected_base = $("input[name='radio1']:checked").val();
   characteristic.writeValue(new TextEncoder().encode(selected_base));
   console.log("selected_base = " + selected_base);
 
-  $('#base_light_name').text() = $("input[name='radio1']:checked").id();
+  $('#base_light_name').text() = "aa";
 }
 
 function changeBlendValue(_type){

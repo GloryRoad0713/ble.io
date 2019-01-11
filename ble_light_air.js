@@ -289,7 +289,6 @@ function changeBageLight(){
   characteristic.writeValue(new TextEncoder().encode(selected_base));
   console.log("selected_base = " + selected_base);
 
-  $('#base_light_name').text() = "aa";
 }
 
 function changeBlendValue(_type){

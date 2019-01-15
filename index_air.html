@@ -59,23 +59,23 @@
       <p class = "Catergory_text"><ion-icon name="locate" class = "menu_icon"></ion-icon>LEDの位置</p>
       <div class="cp_iptxt">
         <label class="ef"><span>LED01</span>
-        <input type="number"  value="1" id  = "p01_text" pattern="([1-9][0-9]*)">
+        <input type="number"  value="7" id  = "p01_text" pattern="([1-9][0-9]*)">
         </label>
         <label class="ef"><span>LED02</span>
-        <input type="number"  value="12" id  = "p02_text" pattern="([1-9][0-9]*)">
+        <input type="number"  value="11" id  = "p02_text" pattern="([1-9][0-9]*)">
         </label>
         <label class="ef"><span>LED03</span>
-        <input type="number"  value="23" id  = "p03_text" pattern="([1-9][0-9]*)">
+        <input type="number"  value="15" id  = "p03_text" pattern="([1-9][0-9]*)">
         </label>
         <label class="ef"><span>セット数</span>
-        <input type="number"  value="2" id  = "p04_text" pattern="([1-9][0-9]*)">
+        <input type="number"  value="3" id  = "p04_text" pattern="([1-9][0-9]*)">
         </label>
       </div>
 
       <hr>
 
       <p class = "Catergory_text"><ion-icon name="power" class = "menu_icon"></ion-icon>ベースの光：
-        <output id = "base_light_name">A1_正常（上：100⇔0、下：100⇔0）</output></p>
+        <output id = "base_light_name">A1_正常（上：100⇔0、下：100⇔0）</output><output id = "base_light_name2"></output></p>
       <ul class="radios" id = "base_light">
           <li>
               <input type="radio" name="radio1" value="1" id="A1_正常（上：100⇔0、下：100⇔0）"  oninput="document.getElementById('base_light_name').value=this.id" checked="checked"/>

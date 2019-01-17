@@ -5,8 +5,10 @@ var sound_links = [{link:"https://dl.dropboxusercontent.com/s/62b9cmkxx109nev/01
                    {link:"https://dl.dropboxusercontent.com/s/e74cx8wjnbbsyb5/05_sound.mp3", name:"05"},
                    {link:"https://dl.dropboxusercontent.com/s/0em3gqmewk91acx/06_sound.mp3", name:"06"},
                    {link:"https://dl.dropboxusercontent.com/s/xjv58j2r600dlqr/07_sound.mp3", name:"07"},
-                   {link:"https://dl.dropboxusercontent.com/s/fi70pfrtqagbcf6/08_sound.mp3", name:"08"}];
-
+                   {link:"https://dl.dropboxusercontent.com/s/fi70pfrtqagbcf6/08_sound.mp3", name:"08"}
+                   {link:"https://dl.dropboxusercontent.com/s/2vv6q8z78z7rdwt/11_sound.mp3", name:"11"},
+                   {link:"https://dl.dropboxusercontent.com/s/w8qxiw1wtt0clyi/12_sound.mp3", name:"12"},
+                   {link:"https://dl.dropboxusercontent.com/s/kp7qe5m5oy4xrvq/13_sound.mp3", name:"13"}];
 
 audio_list = new Array(8);
 //audio_duration = new Array(8);
@@ -16,13 +18,7 @@ for(var i=0; i < audio_list.length; i++){
     audio_list[i].src = sound_links[i].link;
     audio_list[i].preload ="auto";
     audio_count[i] = 0;
-    //audio_list[i].load();
-    /*audio_list[i].addEventListener("loadedmetadata", function(e) {
-      audio_duration[i] = audio_list[i].duration * 1000;
-      console.log(audio_list[i].duration);
-    }, false);
-*/
-    //console.log(sound_links[i].link);
+
 }
 
 //var audio_count = 0;
@@ -121,17 +117,6 @@ $(function(){
 
 });
 
-/*
-document.addEventListener("DOMContentLoaded", function(){
-  document.body.addEventListener('click', function (event) {
-      if(event.target.id == "send"){
-        console.log("pressed button");
-        sendInterruptLight(event.target.value);
-      }
-  }, false);
-}, false);
-*/
-
 //chibi:bitに接続する
 function connect() {
   let options = {};
@@ -180,18 +165,7 @@ function sendInterruptLight(_num_str) {
 
   //光のループ処理関係
   var select_light_loop_num = $("#light_loop_num").val();
-  /*
-  console.log("select_light_loop_num = " + select_light_loop_num)
-  //if(select_light_loop_num != 0){
-  characteristic.writeValue(new TextEncoder().encode(select_light_loop_num));
-  console.log("send light " + String(select_light_loop_num) + " times loop signal")
 
-  }
-  else{
-    characteristic.writeValue(new TextEncoder().encode("ln"));
-    console.log("send light loop signal")
-  }
-*/
   var text = "i" + _num_str + "," + select_light_loop_num;
   var arrayBuffe = new TextEncoder().encode(text);
 
@@ -205,11 +179,16 @@ function sendInterruptLight(_num_str) {
 
 //音の処理
 function playSound(_num_str){
-  var num = Number(_num_str) - 11;
-  var c_name = "check" + String(num);
-  var o_name = "output" + String(num);
-  var c_state = $("[id=" + c_name + "]").prop("checked");
-  var delay_time = $("[id=" + o_name + "]").val()*1000;
+  var num = Number(_num_str);
+
+  if(10 < num){
+    num = num - 3;
+  }
+  //var c_name = "check" + String(num);
+  //var o_name = "output" + String(num);
+  //var c_state = $("[id=" + c_name + "]").prop("checked");
+  //var delay_time = $("[id=" + o_name + "]").val()*1000;
+  var delay_time = 0;
   //var duration = audio_list[num].duration * 1000;
 
   if(0 <= pre_play_num){
@@ -223,6 +202,7 @@ function playSound(_num_str){
 
   //console.log("duration = " + String(audio_list[num].duration * 1000));
 
+  /*
   if(c_state == true){
     setTimeout(function(){
       //audio_list[num].load();
@@ -231,6 +211,7 @@ function playSound(_num_str){
 
     },delay_time);
   }
+  */
   console.log("delay_time = " + delay_time);
 
   pre_play_num = num;
@@ -289,6 +270,7 @@ function changeBageLight(){
   characteristic.writeValue(new TextEncoder().encode(selected_base));
   console.log("selected_base = " + selected_base);
 
+  playSound(_num_str);
 }
 
 function changeBlendValue(_type){
@@ -310,7 +292,8 @@ function changeBlendValue(_type){
 function changeBlightValue(_type){
   console.log(_type);
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
-  var bright_value = "br" + $("#bright_up").val() + "," + $("#bright_down").val();
+  var bright_value = "br" + $("#bright_up_back").val() + "," + $("#bright_down").val();
+  //var bright_value = "br" + $("#bright_up_front").val() + "," + $("#bright_up_back").val() + "," + $("#bright_down").val();
   if(_type == "input"){
     console.log("【input】bright value = " + bright_value);
     characteristic.writeValue(new TextEncoder().encode(bright_value));

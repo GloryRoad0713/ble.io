@@ -190,8 +190,8 @@ function playSound(_num_str){
   //var delay_time = $("[id=" + o_name + "]").val()*1000;
   var delay_time = 0;
   //var duration = audio_list[num].duration * 1000;
-
-  console.log(sound_links[num].name);
+  console.log("sound_num = " + num);
+  console.log(sound_links[num].name + " : " * sound_links[num].link);
 
   if(0 <= pre_play_num){
     audio_list[pre_play_num].pause();

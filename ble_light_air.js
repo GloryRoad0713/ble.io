@@ -205,7 +205,7 @@ function playSound(_num_str){
   //console.log("duration = " + String(audio_list[num].duration * 1000));
 
 
-  if(0 < num){
+  if(0 <= num){
     setTimeout(function(){
       playSoundLoop(num, select_sound_loop_num, audio_list[num].duration * 1000);
 

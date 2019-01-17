@@ -28,34 +28,6 @@
       </div>
 
       <hr>
-
-      <p class = "Catergory_text"><ion-icon name="infinite" class = "menu_icon"></ion-icon>割り込む光のループ再生回数</p>
-      <div class="custom">
-        <select name="options" id = "light_loop_num">
-          <option value="1">ループしない</option>
-          <option value="2">1回</option>
-          <option value="3">2回</option>
-          <option value="4">3回</option>
-          <option value="5">4回</option>
-          <option value="n">常にループ</option>
-        </select>
-      </div>
-
-      <hr>
-
-      <p class = "Catergory_text"><ion-icon name="infinite" class = "menu_icon"></ion-icon>割り込む音のループ再生</p>
-      <div class="custom">
-        <select name="options"  id = "sound_loop_num">
-          <option value="1">ループしない</option>
-          <option value="2">1回</option>
-          <option value="3">2回</option>
-          <option value="4">3回</option>
-          <option value="5">4回</option>
-          <option value="10000">常にループ</option>
-        </select>
-      </div>
-
-      <hr>
       <p class = "Catergory_text"><ion-icon name="locate" class = "menu_icon"></ion-icon>LEDの位置</p>
       <div class="cp_iptxt">
         <label class="ef"><span>LED01</span>
@@ -116,17 +88,16 @@
       </ul>
 
       <hr>
-      <p class = "Catergory_text"><ion-icon name="flask" class = "menu_icon"></ion-icon>ブレンドの割合 : <output id="output_blend">50</output><span>%</span></p>
-      <div class="base_setting_bar">
-          <input id = "blend" type="range" class="base-input-range" value="50" min="0" max="100"  step="1" data-unit="%"
-              oninput="document.getElementById('output_blend').value=this.value">
-      </div>
-      <hr>
 
-      <p class = "Catergory_text"><ion-icon name="flashlight" class = "menu_icon"></ion-icon></ion-icon>明るさ　上部：<output id="output_up">100</output><span>%</span>　下部：<output id="output_down">100</output><span>%</span></p>
+      <p class = "Catergory_text"><ion-icon name="flashlight" class = "menu_icon"></ion-icon></ion-icon>明るさ　上(手前)：<output id="output_up_front">100</output><span>%</span>
+        　上(奥)：<output id="output_up_back">100</output><span>%</span>　下：<output id="output_down">100</output><span>%</span></p>
       <div class="base_setting_bar">
-          <input id = "bright_up" type="range" class="base-input-range" value="100" min="0" max="100"  step="1" data-unit="%"
-              oninput="document.getElementById('output_up').value=this.value">
+          <input id = "bright_up_front" type="range" class="base-input-range" value="100" min="0" max="100"  step="1" data-unit="%"
+              oninput="document.getElementById('output_up_front').value=this.value">
+      </div>
+      <div class="base_setting_bar">
+          <input id = "bright_up_back" type="range" class="base-input-range" value="100" min="0" max="100"  step="1" data-unit="%"
+              oninput="document.getElementById('output_up_back').value=this.value">
       </div>
       <div class="base_setting_bar">
           <input id = "bright_down" type="range" class="base-input-range" value="100" min="0" max="100"  step="1" data-unit="%"
@@ -134,43 +105,60 @@
       </div>
       <hr>
 
+      <p class = "Catergory_text"><ion-icon name="flask" class = "menu_icon"></ion-icon>ブレンドの割合 : <output id="output_blend">50</output><span>%</span></p>
+      <div class="base_setting_bar">
+          <input id = "blend" type="range" class="base-input-range" value="50" min="0" max="100"  step="1" data-unit="%"
+              oninput="document.getElementById('output_blend').value=this.value">
+      </div>
+      <hr>
+
+      <p class = "Catergory_text"><ion-icon name="infinite" class = "menu_icon"></ion-icon>割り込む光のループ再生回数</p>
+      <div class="custom">
+        <select name="options" id = "light_loop_num">
+          <option value="1">ループしない</option>
+          <option value="2">1回</option>
+          <option value="3">2回</option>
+          <option value="4">3回</option>
+          <option value="5">4回</option>
+          <option value="n">常にループ</option>
+        </select>
+      </div>
+
+      <hr>
+
+      <p class = "Catergory_text"><ion-icon name="infinite" class = "menu_icon"></ion-icon>割り込む音のループ再生</p>
+      <div class="custom">
+        <select name="options"  id = "sound_loop_num">
+          <option value="1">ループしない</option>
+          <option value="2">1回</option>
+          <option value="3">2回</option>
+          <option value="4">3回</option>
+          <option value="5">4回</option>
+          <option value="10000">常にループ</option>
+        </select>
+      </div>
+
+      <hr>
 
       <br>
       <br>
       <br>
+
+
+      <div class = "button_container">
+        <button id="send1" value="11" class="btn-animation-02"><span>割り込む光_01</span></a></button>
+      </div>
+
+      <div class = "button_container">
+        <button id="send2" value="12" class="btn-animation-02"><span>割り込む光_02</span></a></button>
+      </div>
+
+      <div class = "button_container">
+        <button id="send3" value="13" class="btn-animation-02"><span>割り込む光_03</span></a></button>
+      </div>
 
       <div class = "button_container">
         <button id="send0" value="0" class="btn-animation-02"><span>光と音の停止</span></a></button>
-      </div>
-
-      <div class = "button_container">
-        <button id="send1" value="11" class="btn-animation-02"><span>行き来する光</span></a></button>
-        <div class="cp_ipcheck">
-              <input type="checkbox" id = "check0" class="check-animation" checked="checked">
-              <input id = "time" type="range" class="input-range" value="0.0" min="0.0" max="5.0"  step="0.1" data-unit="%"
-                  oninput="document.getElementById('output0').value=Number(this.value).toFixed(1)">
-              <output id="output0">0.0</output><span>秒後に音を再生</span>
-        </div>
-      </div>
-
-      <div class = "button_container">
-        <button id="send2" value="12" class="btn-animation-02"><span>全灯する光</span></a></button>
-        <div class="cp_ipcheck">
-            <input type="checkbox" id = "check1" class="check-animation" checked="checked">
-            <input id = "time" type="range" class="input-range" value="0" min="0" max="5"  step="0.1" data-unit="%"
-                oninput="document.getElementById('output1').value=Number(this.value).toFixed(1)">
-            <output id="output1">0.0</output><span>秒後に音を再生</span>
-        </div>
-      </div>
-
-      <div class = "button_container">
-        <button id="send3" value="13" class="btn-animation-02"><span>呼吸する光</span></a></button>
-        <div class="cp_ipcheck">
-            <input type="checkbox" id = "check2" class="check-animation" checked="checked">
-            <input id = "time" type="range" class="input-range" value="0" min="0" max="5"  step="0.1" data-unit="%"
-                oninput="document.getElementById('output2').value=Number(this.value).toFixed(1)">
-            <output id="output2">0.0</output><span>秒後に音を再生</span>
-        </div>
       </div>
 
     </div>

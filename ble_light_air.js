@@ -181,7 +181,7 @@ function sendInterruptLight(_num_str) {
 function playSound(_num_str){
   var num = Number(_num_str) - 1;
 
-  if(10 < num){
+  if(11 <= num){
     num = num - 4;
   }
   //var c_name = "check" + String(num);
@@ -190,6 +190,8 @@ function playSound(_num_str){
   //var delay_time = $("[id=" + o_name + "]").val()*1000;
   var delay_time = 0;
   //var duration = audio_list[num].duration * 1000;
+
+  console.log(sound_links[num].name);
 
   if(0 <= pre_play_num){
     audio_list[pre_play_num].pause();

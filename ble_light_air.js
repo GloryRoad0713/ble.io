@@ -270,7 +270,7 @@ function changeBageLight(){
   characteristic.writeValue(new TextEncoder().encode(selected_base));
   console.log("selected_base = " + selected_base);
 
-  playSound(_num_str);
+  playSound(selected_base);
 }
 
 function changeBlendValue(_type){

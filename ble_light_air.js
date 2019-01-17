@@ -181,7 +181,7 @@ function sendInterruptLight(_num_str) {
 function playSound(_num_str){
   var num = Number(_num_str) - 1;
 
-  if(11 < num){
+  if(10 <= num){
     num = num - 3;
   }
   //var c_name = "check" + String(num);

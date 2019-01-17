@@ -182,7 +182,7 @@ function playSound(_num_str){
   var num = Number(_num_str) - 1;
 
   if(11 <= num){
-    num = num - 4;
+    num = num - 3;
   }
   //var c_name = "check" + String(num);
   //var o_name = "output" + String(num);

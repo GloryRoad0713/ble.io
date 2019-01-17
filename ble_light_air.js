@@ -5,14 +5,14 @@ var sound_links = [{link:"https://dl.dropboxusercontent.com/s/62b9cmkxx109nev/01
                    {link:"https://dl.dropboxusercontent.com/s/e74cx8wjnbbsyb5/05_sound.mp3", name:"05"},
                    {link:"https://dl.dropboxusercontent.com/s/0em3gqmewk91acx/06_sound.mp3", name:"06"},
                    {link:"https://dl.dropboxusercontent.com/s/xjv58j2r600dlqr/07_sound.mp3", name:"07"},
-                   {link:"https://dl.dropboxusercontent.com/s/fi70pfrtqagbcf6/08_sound.mp3", name:"08"}
+                   {link:"https://dl.dropboxusercontent.com/s/fi70pfrtqagbcf6/08_sound.mp3", name:"08"},
                    {link:"https://dl.dropboxusercontent.com/s/2vv6q8z78z7rdwt/11_sound.mp3", name:"11"},
                    {link:"https://dl.dropboxusercontent.com/s/w8qxiw1wtt0clyi/12_sound.mp3", name:"12"},
                    {link:"https://dl.dropboxusercontent.com/s/kp7qe5m5oy4xrvq/13_sound.mp3", name:"13"}];
 
-audio_list = new Array(8);
+audio_list = new Array(11);
 //audio_duration = new Array(8);
-audio_count = new Array(8);
+audio_count = new Array(11);
 for(var i=0; i < audio_list.length; i++){
     audio_list[i] = new Audio();
     audio_list[i].src = sound_links[i].link;

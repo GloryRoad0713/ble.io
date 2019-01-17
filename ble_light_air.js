@@ -18,7 +18,7 @@ for(var i=0; i < audio_list.length; i++){
     audio_list[i].src = sound_links[i].link;
     audio_list[i].preload ="auto";
     audio_count[i] = 0;
-    //console.log(audio_list[i].src);
+
 }
 
 //var audio_count = 0;
@@ -205,7 +205,7 @@ function playSound(_num_str){
   //console.log("duration = " + String(audio_list[num].duration * 1000));
 
 
-  if(num < 0){
+  if(0 < num){
     setTimeout(function(){
       playSoundLoop(num, select_sound_loop_num, audio_list[num].duration * 1000);
 

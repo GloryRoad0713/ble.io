@@ -202,16 +202,14 @@ function playSound(_num_str){
 
   //console.log("duration = " + String(audio_list[num].duration * 1000));
 
-  /*
-  if(c_state == true){
+
+  if(num != 0){
     setTimeout(function(){
-      //audio_list[num].load();
-      //print("duration = " + audio_list[num].duration);
       playSoundLoop(num, select_sound_loop_num, audio_list[num].duration * 1000);
 
     },delay_time);
   }
-  */
+
   console.log("delay_time = " + delay_time);
 
   pre_play_num = num;

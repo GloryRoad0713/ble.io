@@ -406,6 +406,7 @@ select {
 .base_setting_bar {
  	width: 92%;
   margin-left:  var(--margin-side);
+  height: 100px;
   /*text-align: center;*/
 	/*position: relative;*/
  }

@@ -292,8 +292,8 @@ function changeBlendValue(_type){
 function changeBlightValue(_type){
   console.log(_type);
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
-  var bright_value = "br" + $("#bright_up_back").val() + "," + $("#bright_down").val();
-  //var bright_value = "br" + $("#bright_up_front").val() + "," + $("#bright_up_back").val() + "," + $("#bright_down").val();
+  //var bright_value = "br" + $("#bright_up_back").val() + "," + $("#bright_down").val();
+  var bright_value = "br" + $("#bright_up_front").val() + "," + $("#bright_up_back").val() + "," + $("#bright_down").val();
   if(_type == "input"){
     console.log("【input】bright value = " + bright_value);
     characteristic.writeValue(new TextEncoder().encode(bright_value));

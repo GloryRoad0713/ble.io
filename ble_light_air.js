@@ -74,13 +74,22 @@ $(function(){
     changeBlendValue(event.type);
   });
 
-  $("#bright_up").on( 'input', function (event) {
+  $("#bright_up_front").on( 'input', function (event) {
     changeBlightValue(event.type);
   });
 
-  $("#bright_up").on( 'change', function (event) {
+  $("#bright_up_front").on( 'change', function (event) {
     changeBlightValue(event.type);
   });
+
+  $("#bright_up_back").on( 'input', function (event) {
+    changeBlightValue(event.type);
+  });
+
+  $("#bright_up_back").on( 'change', function (event) {
+    changeBlightValue(event.type);
+  });
+
 
   $("#bright_down").on( 'input', function (event) {
     changeBlightValue(event.type);

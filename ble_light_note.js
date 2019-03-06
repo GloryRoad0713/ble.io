@@ -62,7 +62,7 @@ $(function(){
   });
 
   $("#light_loop_num").click(function(){
-    changeBageLoop();
+    changeBaseLoop();
   });
 
   $("#bright_down").on( 'input', function (event) {
@@ -131,7 +131,7 @@ function connect() {
     characteristic = chara;
 
     setTimeout(changelightPosition, 200);
-    setTimeout(changeBageLoop, 400);
+    setTimeout(changeBaseLoop, 400);
     setTimeout(changeBageLight, 600);
     setTimeout(changeBlightValue, 800, "change");
   })

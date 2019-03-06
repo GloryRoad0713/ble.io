@@ -57,14 +57,6 @@ $(function(){
     changelightPosition();
   });
 
-  $('#p04_text').change(function() {
-    changelightPosition();
-  });
-
-  $("#light_loop_num").click(function(){
-    changeBaseLoop();
-  });
-
   $("#bright_down").on( 'input', function (event) {
     changeBlightValue(event.type);
   });
@@ -131,9 +123,8 @@ function connect() {
     characteristic = chara;
 
     setTimeout(changelightPosition, 200);
-    setTimeout(changeBaseLoop, 400);
-    setTimeout(changeBageLight, 600);
-    setTimeout(changeBlightValue, 800, "change");
+    setTimeout(changeBlightValue, 400, "change");
+    setTimeout(changeBlendValue, 600, "change");
   })
   .catch(error => {
     console.log(error);
@@ -246,27 +237,23 @@ function changelightPosition(){
   //console.log("send position signal")
 }
 
-//ベースの光の変更処理
-function changeBageLight(){
+function changeBlendValue(_type){
   if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
-
-  var selected_base = $("input[name='radio1']:checked").val();
-  characteristic.writeValue(new TextEncoder().encode(selected_base));
-  console.log("selected_base = " + selected_base);
-
-  //setTimeout(changeBaseLoop, 200);
-
-  playSound(selected_base);
+  //var blend_value = "b" + $("#blend").val();
+  var blend_value = "b100";
+  if(_type == "input"){
+    console.log("【input】blend value = " + blend_value);
+    characteristic.writeValue(new TextEncoder().encode(blend_value));
+  }
+  else{
+    setTimeout(function(){
+      console.log("【changed】blend value = " + blend_value);
+      characteristic.writeValue(new TextEncoder().encode(blend_value));
+    },200);
+  }
 }
 
-  //ベースの光のループ処理関係
-function changeBaseLoop(){
-  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
 
-  var select_light_loop_num = "l" + $("#light_loop_num").val();
-  characteristic.writeValue(new TextEncoder().encode(select_light_loop_num));
-  console.log("selected_base = " + select_light_loop_num);
-}
 
 function changeBlightValue(_type){
   console.log(_type);

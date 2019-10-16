@@ -1,14 +1,3 @@
-audio_list = new Array(11);
-//audio_duration = new Array(8);
-audio_count = new Array(11);
-for(var i=0; i < audio_list.length; i++){
-    audio_list[i] = new Audio();
-    audio_list[i].src = sound_links[i].link;
-    audio_list[i].preload ="auto";
-    audio_count[i] = 0;
-
-}
-
 //var audio_count = 0;
 
 var bluetoothDevice;

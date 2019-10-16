@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ble-control</title>
+    <link rel="stylesheet" type="text/css" href="style_cr5.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/ionicons@4.4.8/dist/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>-
+    <script type="text/javascript" src="ble_light_cr5.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="title margin">
+          <p id="title">光と音のコントロール</p>
+          <p id="subtitle">esp32との連携用(cr5版)</p>
+      </div>
+      <br>
+
+        <p class = "Catergory_text"><ion-icon name="bluetooth" class = "menu_icon"></ion-icon>Bluetooth接続</p>
+        <div class="switch">
+        <label class="switch__label" padding = "30px">
+          <input type="checkbox" class="switch__input"/ id = "check_ble_connect">
+          <span class="switch__content"></span>
+          <span class="switch__circle"></span>
+        </label>
+      </div>
+
+      <hr>
+
+      <br>
+      <br>
+      <br>
+
+      <div class = "button_container">
+        <button id="send0" value="0" class="btn-animation-02"><span>消灯</span></a></button>
+      </div>
+      <div class = "button_container">
+        <button id="send1" value="1" class="btn-animation-02"><span>5灯を全点灯</span></a></button>
+      </div>
+      <div class = "button_container">
+        <button id="send2" value="2" class="btn-animation-02"><span>3灯を全点灯</span></a></button>
+      </div>
+      <div class = "button_container">
+        <button id="send3" value="3" class="btn-animation-02"><span>反応</span></a></button>
+      </div>
+      <div class = "button_container">
+        <button id="send4" value="4" class="btn-animation-02"><span>認証</span></a></button>
+      </div>
+      <div class = "button_container">
+        <button id="send5" value="5" class="btn-animation-02"><span>待機</span></a></button>
+      </div>
+      <div class = "button_container">
+        <button id="send6" value="6" class="btn-animation-02"><span>予備01</span></a></button>
+      </div>
+      <div class = "button_container">
+        <button id="send7" value="7" class="btn-animation-02"><span>予備02</span></a></button>
+      </div>
+      <div class = "button_container">
+        <button id="send8" value="8" class="btn-animation-02"><span>予備03</span></a></button>
+      </div>
+
+
+    </div>
+
+
+  </body>
+</html>

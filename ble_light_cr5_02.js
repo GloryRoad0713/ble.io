@@ -26,7 +26,7 @@ $(function(){
   });
 
   $("#base_light").click(function(){
-    changeBageLight();
+    sendInterruptLight();
   });
 
 });

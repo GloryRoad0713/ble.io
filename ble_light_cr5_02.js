@@ -88,9 +88,6 @@ function sendInterruptLight(){
   },200);
 }
 
-}
-
-
 
 //BEL切断処理
 function disconnect() {

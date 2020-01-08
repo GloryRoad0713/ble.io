@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ble-control</title>
+    <link rel="stylesheet" type="text/css" href="style_cr5.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/ionicons@4.4.8/dist/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>-
+    <script type="text/javascript" src="ble_light_cr5_02.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="title margin">
+          <p id="title">光と音のコントロール</p>
+          <p id="subtitle">esp32との連携用(cr5版)</p>
+      </div>
+      <br>
+
+        <p class = "Catergory_text"><ion-icon name="bluetooth" class = "menu_icon"></ion-icon>Bluetooth接続</p>
+        <div class="switch">
+        <label class="switch__label" padding = "30px">
+          <input type="checkbox" class="switch__input"/ id = "check_ble_connect">
+          <span class="switch__content"></span>
+          <span class="switch__circle"></span>
+        </label>
+      </div>
+
+      <hr>
+
+      <p class = "Catergory_text">3灯</output><output id = "base_light_name2"></output></p>
+      <ul class="radios" id = "base_light">
+          <li>
+              <input type="radio" name="radio1" value="1">
+              <label for="radio1">全点灯</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="2"/>
+              <label for="radio2">反応</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="3"/>
+              <label for="radio3">反応-エラー</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="4"/>
+              <label for="radio4">認証</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="5"/>
+              <label for="radio5">認証-エラー</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="6"/>
+              <label for="radio6">待機</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="7"/>
+              <label for="radio7">待機-エラー</label>
+          </li>
+      </ul>
+
+      <p class = "Catergory_text">4灯</output><output id = "base_light_name2"></output></p>
+      <ul class="radios" id = "base_light">
+          <li>
+              <input type="radio" name="radio1" value="8">
+              <label for="radio1">全点灯</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="9"/>
+              <label for="radio2">反応</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="10"/>
+              <label for="radio3">反応-エラー</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="11"/>
+              <label for="radio4">認証</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="12"/>
+              <label for="radio5">認証-エラー</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="13"/>
+              <label for="radio6">待機</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="14"/>
+              <label for="radio7">待機-エラー</label>
+          </li>
+      </ul>
+
+      <p class = "Catergory_text">5灯</output><output id = "base_light_name2"></output></p>
+      <ul class="radios" id = "base_light">
+          <li>
+              <input type="radio" name="radio1" value="15">
+              <label for="radio1">全点灯</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="16"/>
+              <label for="radio2">反応</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="17"/>
+              <label for="radio3">反応-エラー</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="18"/>
+              <label for="radio4">認証</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="19"/>
+              <label for="radio5">認証-エラー</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="20"/>
+              <label for="radio6">待機</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="21"/>
+              <label for="radio7">待機-エラー</label>
+          </li>
+      </ul>
+
+      <p class = "Catergory_text">その他</output><output id = "base_light_name2"></output></p>
+      <ul class="radios" id = "base_light">
+          <li>
+              <input type="radio" name="radio1" value="0">
+              <label for="radio1">消灯</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="23"/>
+              <label for="radio2">エラー</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="24"/>
+              <label for="radio3">データ受信</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="25"/>
+              <label for="radio4">エラー+データ受信</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="26"/>
+              <label for="radio5">予備01</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="27"/>
+              <label for="radio6">予備02</label>
+          </li>
+          <li>
+              <input type="radio" name="radio1" value="28"/>
+              <label for="radio7">予備03</label>
+          </li>
+      </ul>
+
+
+    </div>
+
+
+  </body>
+</html>

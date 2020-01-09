@@ -36,6 +36,10 @@ $(function(){
   $("#base_light_03").click(function(){
     sendInterruptLight();
   });
+  
+  $("#base_light_04").click(function(){
+    sendInterruptLight();
+  });
 
 });
 
@@ -78,7 +82,7 @@ function connect() {
 }
 //ESP32に値を送信
 function sendInterruptLight(){
-  //if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
+  if (!bluetoothDevice || !bluetoothDevice.gatt.connected || !characteristic) return ;
   var selected_base = $("input[name='radio1']:checked").val();
   //characteristic.writeValue(new TextEncoder().encode(selected_base));
   //console.log("selected_base = " + selected_base);
@@ -93,7 +97,7 @@ function sendInterruptLight(){
 
   var text = "i" + selected_base + "," + select_light_loop_num;
   var arrayBuffe = new TextEncoder().encode(text);
-  console.log("send InterruptLight signal = " + text)
+  //console.log("send InterruptLight signal = " + text)
   setTimeout(function(){
     characteristic.writeValue(arrayBuffe);
     console.log("send InterruptLight signal = " + text)

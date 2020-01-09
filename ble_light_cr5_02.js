@@ -78,6 +78,10 @@ function sendInterruptLight(){
   //光のループ処理関係
   //var select_light_loop_num = $("#light_loop_num").val();
   var select_light_loop_num = 1;
+  
+  if(selected_base == 0){
+    select_light_loop_num = 'n';
+  }
 
   var text = "i" + selected_base + "," + select_light_loop_num;
   var arrayBuffe = new TextEncoder().encode(text);

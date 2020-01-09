@@ -25,7 +25,15 @@ $(function(){
     }
   });
 
-  $("#base_light").click(function(){
+  $("#base_light_01").click(function(){
+    sendInterruptLight();
+  });
+  
+  $("#base_light_02").click(function(){
+    sendInterruptLight();
+  });
+  
+  $("#base_light_03").click(function(){
     sendInterruptLight();
   });
 
